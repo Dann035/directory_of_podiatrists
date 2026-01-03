@@ -1,0 +1,38 @@
+{
+  "name": "directory_of_podiatrists",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "next": "16.1.1",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.1.18",
+    "@types/node": "20.19.27",
+    "@types/react": "19.2.3",
+    "@types/react-dom": "19.2.3",
+    "eslint": "9.39.2",
+    "eslint-config-next": "16.1.1",
+    "tailwindcss": "4.1.18",
+    "typescript": "5.1.6",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/jest-dom": "^6.0.0",
+    "jest": "^30.0.0",
+    "jest-environment-jsdom": "30.0.0",
+    "babel-jest": "^30.0.0",
+    "@babel/preset-env": "^7.22.0",
+    "@babel/preset-react": "^7.22.5",
+    "@babel/preset-typescript": "^7.22.5"
+  }
+}

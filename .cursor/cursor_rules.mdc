@@ -1,0 +1,35 @@
+---
+alwaysApply: true
+---
+
+# Reglas de Desarrollo
+
+## Contexto del Proyecto
+
+1. **Siempre revisa la carpeta `.cursor/planning` antes de desarrollar cualquier funcionalidad**:
+   - Busca dentro de `.cursor/planning` para obtener contexto completo sobre lo que se quiere desarrollar
+   - Revisa los archivos relevantes como PRD, Architecture, Data Model, API Spec, y los sprints activos
+   - El archivo `99-MANIFEST.md` contiene información importante sobre el proyecto
+   - Consulta los archivos de sprints en `.cursor/planning/sprints/` para entender el trabajo actual
+
+2. **Siempre revisa los archivos `package.json` para mantenerte actualizado del stack tecnológico**:
+   - Revisa el `package.json` raíz para entender la estructura del monorepo
+   - Revisa `client/package.json` para el stack del frontend (Next.js, React, Tailwind, etc.)
+   - Revisa `server/package.json` para el stack del backend (NestJS, TypeScript, etc.)
+   - Mantén las versiones y dependencias en mente al escribir código
+   - Respeta el gestor de paquetes configurado (pnpm) y las versiones de Node.js especificadas
+
+## Stack Tecnológico Actual
+
+- **Monorepo**: pnpm workspaces
+- **Frontend**: Next.js 16.1.1, React 19.2.3, Tailwind CSS 4.1.18, TypeScript 5.1.6
+- **Backend**: NestJS 11.0.1, TypeScript 5.7.3
+- **Testing**: Jest 30.0.0, Testing Library
+- **Node.js**: >=18
+
+## Flujo de Trabajo Recomendado
+
+1. Antes de empezar cualquier tarea, revisa `.cursor/planning` para contexto
+2. Consulta los `package.json` para entender las dependencias y versiones
+3. Implementa siguiendo las especificaciones del planning
+4. Usa las tecnologías y versiones definidas en los `package.json`

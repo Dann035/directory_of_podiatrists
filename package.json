@@ -1,26 +1,53 @@
 {
-  "name": "directory_of_podiatrists",
+  "name": "directory-of-podiatrists",
   "version": "0.1.0",
   "private": true,
+  "description": "Monorepo: Next.js frontend and NestJS backend for MVP",
+  "packageManager": "pnpm@8.8.0",
+  "workspaces": [
+    "client",
+    "server"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
-  "dependencies": {
-    "next": "16.1.1",
-    "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "install": "pnpm -w install",
+    "bootstrap": "pnpm -w install",
+    "setup": "pnpm -w install && pnpm run build",
+    "clean": "rimraf node_modules && pnpm -w -r store prune",
+    "clean:all": "rimraf node_modules client/node_modules server/node_modules && pnpm store prune",
+    "dev": "concurrently -n \"SERVER,CLIENT\" -c \"blue,green\" --kill-others-on-fail \"cd server && pnpm run start:dev\" \"cd client && pnpm run dev\"",
+    "dev:client": "pnpm --filter ./client run dev",
+    "dev:server": "pnpm --filter ./server run start:dev",
+    "dev:server:debug": "pnpm --filter ./server run start:debug",
+    "build": "pnpm run build:server && pnpm run build:client",
+    "build:client": "pnpm --filter ./client run build",
+    "build:server": "pnpm --filter ./server run build",
+    "start": "concurrently -n \"SERVER,CLIENT\" -c \"blue,green\" --kill-others-on-fail \"cd server && pnpm run start:prod\" \"cd client && pnpm run start\"",
+    "start:client": "pnpm --filter ./client run start",
+    "start:server": "pnpm --filter ./server run start:prod",
+    "lint": "pnpm run lint:server && pnpm run lint:client",
+    "lint:client": "pnpm --filter ./client run lint",
+    "lint:server": "pnpm --filter ./server run lint",
+    "lint:fix": "pnpm --filter ./server run lint && pnpm --filter ./client run lint",
+    "format": "pnpm --filter ./server run format",
+    "test": "pnpm run test:server && pnpm run test:client",
+    "test:client": "pnpm --filter ./client run test",
+    "test:server": "pnpm --filter ./server run test",
+    "test:watch": "pnpm -w -r run test:watch",
+    "test:watch:client": "pnpm --filter ./client run test:watch",
+    "test:watch:server": "pnpm --filter ./server run test:watch",
+    "test:cov": "pnpm --filter ./server run test:cov",
+    "test:e2e": "pnpm --filter ./server run test:e2e",
+    "typecheck": "pnpm run typecheck:server && pnpm run typecheck:client",
+    "typecheck:client": "pnpm --filter ./client run typecheck",
+    "typecheck:server": "pnpm --filter ./server run typecheck"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.1.1",
-    "tailwindcss": "^4",
-    "typescript": "^5"
-  }
+    "concurrently": "8.2.0",
+    "rimraf": "5.0.0"
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8.8.0"
+  },
+  "license": "UNLICENSED"
 }

@@ -1,0 +1,5 @@
+# pnpm workspace definition for directory_of_podiatrists
+# Incluye los paquetes del monorepo. Añade más rutas si creas nuevos paquetes.
+packages:
+  - "client"
+  - "server"
