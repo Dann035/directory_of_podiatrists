@@ -21,6 +21,9 @@ export interface Category {
   key: string;
   title: string;
   slug: string;
+  icon: string;
+  description: string;
+  color: string;
 }
 
 export interface Testimonial {
@@ -29,3 +32,9 @@ export interface Testimonial {
   rating: number;
 }
 
+export interface Benefit {
+  title: string;
+  description: string;
+  icon: string;
+  details: string[];
+}

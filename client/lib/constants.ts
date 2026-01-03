@@ -2,20 +2,88 @@
  * Static data constants for the home page
  */
 
-import { Category, Testimonial } from './types';
+import { Category, Testimonial, Benefit } from './types';
 
 export const CATEGORIES: Category[] = [
-  { key: 'uñas', title: 'Tratamientos uñas', slug: 'unias' },
-  { key: 'plantillas', title: 'Plantillas y ortopedia', slug: 'plantillas' },
-  { key: 'fascitis', title: 'Fascitis plantar', slug: 'fascitis' },
-  { key: 'diabetes', title: 'Cuidado pie diabético', slug: 'diabetes' },
+  { 
+    key: 'uñas', 
+    title: 'Tratamientos de uñas', 
+    slug: 'unias',
+    icon: '💅',
+    description: 'Uñas encarnadas, hongos y cuidado general',
+    color: 'from-purple-500 to-pink-500'
+  },
+  { 
+    key: 'plantillas', 
+    title: 'Plantillas y ortopedia', 
+    slug: 'plantillas',
+    icon: '👟',
+    description: 'Plantillas personalizadas y corrección postural',
+    color: 'from-blue-500 to-cyan-500'
+  },
+  { 
+    key: 'fascitis', 
+    title: 'Fascitis plantar', 
+    slug: 'fascitis',
+    icon: '🦶',
+    description: 'Tratamiento del dolor en la planta del pie',
+    color: 'from-green-500 to-emerald-500'
+  },
+  { 
+    key: 'diabetes', 
+    title: 'Pie diabético', 
+    slug: 'diabetes',
+    icon: '🩺',
+    description: 'Cuidado especializado para pacientes diabéticos',
+    color: 'from-orange-500 to-red-500'
+  },
 ];
 
-export const BENEFITS: string[] = [
-  'Profesionales verificados',
-  'Reseñas reales de pacientes',
-  'Reserva fácil y rápida',
-  'Soporte y devolución segura',
+export const BENEFITS: Benefit[] = [
+  {
+    title: 'Profesionales verificados',
+    description: 'Todos nuestros podólogos están certificados y verificados',
+    icon: '✓',
+    details: [
+      'Verificación de licencia profesional',
+      'Revisión de credenciales académicas',
+      'Validación de experiencia práctica',
+      'Actualización continua de certificaciones',
+    ],
+  },
+  {
+    title: 'Reseñas reales de pacientes',
+    description: 'Opiniones auténticas de pacientes verificados',
+    icon: '★',
+    details: [
+      'Sistema de reseñas verificadas',
+      'Calificaciones detalladas por servicio',
+      'Comentarios moderados y auténticos',
+      'Transparencia total en valoraciones',
+    ],
+  },
+  {
+    title: 'Reserva fácil y rápida',
+    description: 'Agenda tu cita en menos de 2 minutos',
+    icon: '⚡',
+    details: [
+      'Proceso de reserva simplificado',
+      'Confirmación instantánea por email',
+      'Recordatorios automáticos de cita',
+      'Reprogramación flexible y sin cargos',
+    ],
+  },
+  {
+    title: 'Soporte y atención garantizada',
+    description: 'Estamos aquí para ayudarte en todo momento',
+    icon: '🛡️',
+    details: [
+      'Atención al cliente 24/7',
+      'Garantía de satisfacción',
+      'Resolución rápida de incidencias',
+      'Protección de datos personales',
+    ],
+  },
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
@@ -54,6 +122,11 @@ export const TESTIMONIALS: Testimonial[] = [
     text: 'Llevaba tiempo buscando un buen podólogo y aquí lo encontré. Las reseñas me ayudaron mucho a decidirme.',
     rating: 5,
   },
+  {
+    author: 'Pedro, Madrid',
+    text: 'La plataforma es muy fácil de usar. Encontré un podólogo excelente cerca de casa y pude reservar una cita en minutos.',
+    rating: 4.9,
+  }
 ];
 
 export const HOW_IT_WORKS_STEPS: string[] = [

@@ -1,38 +1,26 @@
-"use client";
-import React from "react";
+'use client';
 
-type Props = { value: string; onChange: (v: string) => void };
-
-export default function SearchBar({ value, onChange }: Props) {
-  return (
-    <div className="mt-4">
-      <input
-        aria-label="Buscar"
-        placeholder="Ej. Juan Pérez, Madrid, uñas encarnadas"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-md border border-zinc-200 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none"
-      />
-    </div>
-  );
-}
-"use client";
-import React from "react";
+import React from 'react';
 
 type Props = {
   value: string;
   onChange: (v: string) => void;
+  placeholder?: string;
 };
 
-export default function SearchBar({ value, onChange }: Props) {
+export default function SearchBar({ 
+  value, 
+  onChange, 
+  placeholder = 'Buscar por nombre, ciudad o especialidad' 
+}: Props) {
   return (
-    <div style={{ margin: "12px 0" }}>
+    <div className="mt-4">
       <input
         aria-label="Buscar podólogo"
-        placeholder="Buscar por nombre, ciudad o especialidad"
+        placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        style={{ padding: 8, width: "100%", borderRadius: 6, border: "1px solid #ddd" }}
+        className="w-full rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-3 text-sm text-zinc-900 dark:text-zinc-50 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
     </div>
   );
