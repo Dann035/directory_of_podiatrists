@@ -1,0 +1,29 @@
+# Windsurf AI Rules - Directory of Podiatrists
+
+> **Nota:** Windsurf, lee la configuración universal en `.ai/`
+
+## 🎯 Inicio Rápido
+
+Antes de empezar, lee estos archivos en orden:
+
+1. **`.ai/rules.md`** - Reglas del proyecto (OBLIGATORIO)
+2. **`.ai/context.md`** - Contexto y estado actual
+3. **`.ai/conventions.md`** - Convenciones de código
+4. **`/docs/plans/README.md`** - Planes de desarrollo
+
+## 📚 Documentación Completa
+
+- Arquitectura: `/ARCHITECTURE_SUMMARY.md`
+- Guía IA: `/docs/AI_COLLABORATION_GUIDE.md`
+- Decisiones pendientes: `/docs/REVIEW_NEEDED.md`
+
+## 🚀 Prompts Útiles
+
+- Onboarding: `.ai/prompts/onboarding.md`
+- Nueva feature: `.ai/prompts/new-feature.md`
+- Debug: `.ai/prompts/debug.md`
+
+---
+
+**Importante:** Sigue las reglas en `.ai/rules.md` para mantener consistencia con el equipo.
+
