@@ -1,0 +1,138 @@
+# Documentación Técnica - Directorio de Podólogos MVP
+
+**Versión**: 1.0 | **Fecha**: Enero 2026 | **Estado**: 🔵 En Desarrollo
+
+---
+
+## Configuración del Proyecto
+
+| Aspecto                 | Valor                                        |
+| ----------------------- | -------------------------------------------- |
+| **Complejidad**         | Alta (18 documentos, ~180 páginas estimadas) |
+| **Idiomas**             | Español (España)                             |
+| **Sistema de Usuarios** | SI (Registro, Login, Área privada multi-rol) |
+| **Dashboard Métricas**  | SI (KPIs, gráficos interactivos por rol)     |
+| **Monetización**        | SI (Suscripciones: Free, Básico, Premium)    |
+| **Stack**               | Next.js 14 + NestJS + PostgreSQL + Prisma    |
+
+---
+
+## Historias de Usuario
+
+### Como Paciente
+- **COMO** paciente **QUIERO** buscar podólogos por ciudad/provincia/código postal **PARA** encontrar profesionales cerca de mi ubicación
+- **COMO** paciente **QUIERO** registrarme y reservar citas con podólogos **PARA** gestionar mi salud podológica
+- **COMO** paciente **QUIERO** dejar reseñas después de una cita **PARA** ayudar a otros pacientes a elegir
+
+### Como Podólogo
+- **COMO** podólogo **QUIERO** registrarme y verificar mi número de colegiado **PARA** ofrecer mis servicios en la plataforma
+- **COMO** podólogo **QUIERO** gestionar mi perfil profesional y disponibilidad **PARA** atraer más pacientes
+- **COMO** podólogo **QUIERO** ver métricas de mi perfil (visualizaciones, clics) **PARA** optimizar mi presencia
+
+### Como Administrador
+- **COMO** administrador **QUIERO** verificar datos de podólogos colegiados **PARA** mantener la calidad del directorio
+- **COMO** administrador **QUIERO** ver KPIs globales del marketplace **PARA** tomar decisiones estratégicas
+
+---
+
+## Índice Maestro de Documentación
+
+| #   | Documento                          | Descripción                                                    | Estado | Estimación  |
+| --- | ---------------------------------- | -------------------------------------------------------------- | ------ | ----------- |
+| 01  | `01_vision_general.mdc`            | Objetivos, alcance, público objetivo, propuesta de valor       | ⚪️      | ~8 páginas  |
+| 02  | `02_arquitectura_informacion.mdc`  | Navegación, sitemap, flujos paciente vs podólogo               | ⚪️      | ~12 páginas |
+| 03  | `03_directorio_busqueda.mdc`       | Filtrado, geolocalización, algoritmo ordenación, mapa vs lista | ⚪️      | ~15 páginas |
+| 04  | `04_perfil_profesional.mdc`        | Ficha podólogo: estructura visual, validación, CTAs conversión | ⚪️      | ~10 páginas |
+| 05  | `05_onboarding_podologos.mdc`      | Registro profesional, documentos, verificación colegiado       | ⚪️      | ~12 páginas |
+| 06  | `06_modelo_monetizacion.mdc`       | Planes (Free/Básico/Premium), perfiles destacados, Stripe      | ⚪️      | ~14 páginas |
+| 07  | `07_pagina_home.mdc`               | Página principal, buscador héroe, propuesta de valor           | ⚪️      | ~8 páginas  |
+| 08  | `08_sistema_usuarios.mdc`          | Autenticación, recuperación contraseña, roles, permisos        | ⚪️      | ~15 páginas |
+| 09  | `09_dashboard_metricas.mdc`        | Visualizaciones podólogos, KPIs admin, gráficos                | ⚪️      | ~12 páginas |
+| 10  | `10_pagina_contacto.mdc`           | Soporte técnico y comercial                                    | ⚪️      | ~6 páginas  |
+| 11  | `11_pagina_faq.mdc`                | Dudas uso plataforma y facturación                             | ⚪️      | ~8 páginas  |
+| 12  | `12_pagina_nosotros.mdc`           | Información institucional y confianza                          | ⚪️      | ~6 páginas  |
+| 13  | `13_integraciones_externas.mdc`    | Google Maps API, Analytics, Pasarela pago                      | ⚪️      | ~10 páginas |
+| 14  | `14_internacionalizacion.mdc`      | Arquitectura i18n ES/VA                                        | ⚪️      | ~8 páginas  |
+| 15  | `15_paginas_legales.mdc`           | RGPD datos salud, Cookies, Términos                            | ⚪️      | ~12 páginas |
+| 16  | `16_componentes_reutilizables.mdc` | Design System: botones, tarjetas, inputs                       | ⚪️      | ~10 páginas |
+| 17  | `17_requisitos_tecnicos.mdc`       | SEO Local, Performance, Seguridad, Tech Stack                  | ⚪️      | ~14 páginas |
+| 18  | `18_roadmap_implementacion.mdc`    | Fases desarrollo (buscador primero)                            | ⚪️      | ~10 páginas |
+
+**Total estimado**: ~180 páginas de documentación técnica
+
+---
+
+## Convenciones de Documentación
+
+### Formato de Archivos
+- **Naming**: `##_snake_case.mdc` (ej: `01_vision_general.mdc`)
+- **Límite**: Máximo 200 líneas por archivo
+- **Si excede**: Crear archivo secundario con indexación (ej: `03_directorio_busqueda_2.mdc`)
+
+### Estructura de Cada Documento
+1. **Encabezado**: Nombre, propósito, versión, estado
+2. **Resumen ejecutivo**: 50-150 palabras
+3. **Audiencia**: Quién utiliza/valida el documento
+4. **Requisitos funcionales**: Listado estructurado
+5. **Flujos y casos de uso**: Escenarios principales
+6. **Requisitos no funcionales**: Performance, seguridad, SEO
+7. **Interfaces e integraciones**: APIs, terceros
+8. **Datos y modelos**: Esquema mínimo si aplica
+9. **Criterios de aceptación**: Condiciones comprobables
+10. **Estado y notas**: Tags ⚪️🔵🟡🟢, autor, fecha
+11. **Referencias**: Enlaces relativos a otros documentos
+
+### Estilo de Escritura
+- **Lengua**: Español (España)
+- **Tono**: Técnico, conciso, orientado a producto y desarrollo
+- **Enfoque**: Directo, preciso, información relevante (estilo SaaS-técnico)
+- **Objetivo**: Documentación para inversores y equipo de desarrollo
+
+### Leyenda de Estados
+- ⚪️ **Pendiente**: No iniciado
+- 🔵 **En Progreso**: En desarrollo
+- 🟡 **Necesita Revisión**: Requiere feedback
+- 🟢 **Completado**: Aprobado y listo
+
+---
+
+## Priorización de Desarrollo
+
+### Fase 1: Core del Negocio (MVP Mínimo)
+1. `01_vision_general.mdc`
+2. `02_arquitectura_informacion.mdc`
+3. `03_directorio_busqueda.mdc` ⭐ **CRÍTICO**
+4. `04_perfil_profesional.mdc` ⭐ **CRÍTICO**
+5. `08_sistema_usuarios.mdc` ⭐ **CRÍTICO**
+6. `05_onboarding_podologos.mdc`
+
+### Fase 2: Monetización y Engagement
+7. `06_modelo_monetizacion.mdc`
+8. `07_pagina_home.mdc`
+9. `09_dashboard_metricas.mdc`
+
+### Fase 3: Soporte y Legal
+10. `10_pagina_contacto.mdc`
+11. `11_pagina_faq.mdc`
+12. `12_pagina_nosotros.mdc`
+13. `15_paginas_legales.mdc`
+
+### Fase 4: Optimización y Escalabilidad
+14. `13_integraciones_externas.mdc`
+15. `14_internacionalizacion.mdc`
+16. `16_componentes_reutilizables.mdc`
+17. `17_requisitos_tecnicos.mdc`
+18. `18_roadmap_implementacion.mdc`
+
+---
+
+## Referencias y Enlaces
+
+- **Arquitectura**: Ver `02_arquitectura_informacion.mdc`
+- **Stack Técnico**: Ver `17_requisitos_tecnicos.mdc`
+- **Roadmap**: Ver `18_roadmap_implementacion.mdc`
+- **Reglas de Desarrollo**: Ver `/.cursorrules`
+
+---
+
+**Última actualización**: Enero 2026 | **Mantenido por**: Equipo de Desarrollo

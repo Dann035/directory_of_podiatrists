@@ -1,0 +1,200 @@
+# 05 - Onboarding Podólogos
+
+**Versión**: 1.0 | **Fecha**: Enero 2026 | **Estado**: ⚪️ Pendiente
+
+---
+
+## Resumen Ejecutivo
+
+Flujo de registro profesional para podólogos con verificación de número de colegiado, subida de documentos y validación manual por administradores. Proceso optimizado para reducir fricción manteniendo calidad.
+
+---
+
+## Audiencia
+
+- **Podólogos**: Proceso de registro
+- **Administradores**: Verificación de datos
+- **Desarrolladores**: Implementación del flujo
+
+---
+
+## Flujo de Registro
+
+### Paso 1: Inicio
+- CTA "Soy Podólogo" (Home o header)
+- Landing específica: `/registro-podologo`
+- Formulario inicial:
+  - Email
+  - Password (mínimo 8 caracteres, 1 mayúscula, 1 número)
+  - Confirmar password
+  - Aceptar términos y condiciones
+  - Checkbox RGPD
+
+### Paso 2: Datos Personales
+- Nombre
+- Apellidos
+- DNI/NIE
+- Teléfono
+- Fecha nacimiento (opcional)
+
+### Paso 3: Datos Profesionales
+- **Número de colegiado**: Campo crítico (validación formato)
+- **Colegio profesional**: Dropdown (todos los colegios españoles)
+- **Año colegiación**: Validar coherencia
+- **Especialidades**: Multi-select (mínimo 1)
+- **Años de experiencia**: Calculado o manual
+
+### Paso 4: Documentos
+- **DNI/NIE**: PDF o imagen (máx 5MB)
+- **Título profesional**: PDF o imagen
+- **Certificado colegiado**: PDF o imagen (opcional pero recomendado)
+- **Foto profesional**: JPG/PNG, 1:1, máx 5MB
+
+### Paso 5: Consultorio
+- **Dirección completa**: Calle, número, piso
+- **Ciudad**: Autocompletado
+- **Provincia**: Dropdown
+- **Código postal**: Validación formato
+- **Coordenadas**: Auto-generadas (Geocoding API)
+
+### Paso 6: Configuración Inicial
+- **Horarios**: Tabla semanal básica
+- **Precios**: Consulta inicial (opcional)
+- **Biografía**: Texto libre (máx 500 palabras, opcional)
+
+### Paso 7: Plan
+- Selección plan (Free/Básico/Premium)
+- **Free**: Activación inmediata post-verificación
+- **Básico/Premium**: Redirección a Stripe checkout
+
+### Paso 8: Confirmación
+- Email de confirmación enviado
+- Mensaje: "Tu registro está en revisión (24-48h)"
+- Estado: "Pendiente de verificación"
+
+---
+
+## Verificación Manual
+
+### Proceso Admin
+1. **Notificación**: Email a admin cuando nuevo registro
+2. **Dashboard admin**: Lista de podólogos pendientes
+3. **Revisión documentos**:
+   - Validar DNI coincide con datos
+   - Verificar título profesional
+   - Confirmar número colegiado (consultar base oficial si disponible)
+4. **Decisión**:
+   - ✅ **Aprobar**: Perfil activo, email confirmación
+   - ❌ **Rechazar**: Email con motivo, opción apelar
+   - ⚠️ **Solicitar más info**: Email con requerimientos
+
+### Criterios de Aprobación
+- Documentos legibles y válidos
+- Número colegiado existe y coincide
+- Datos coherentes (nombre, DNI, título)
+- Email verificado
+- Foto profesional adecuada
+
+### Tiempo de Respuesta
+- **Objetivo**: 24-48 horas
+- **Escalación**: Si >72h, notificación automática
+
+---
+
+## Estados del Perfil
+
+### Pendiente de Verificación
+- Perfil oculto (no aparece en búsqueda)
+- Dashboard muestra: "En espera de verificación"
+- Podólogo puede editar datos pero no publicar
+
+### Verificado y Activo
+- Perfil visible en búsqueda
+- Dashboard completo accesible
+- Email de bienvenida con guía de uso
+
+### Rechazado
+- Perfil oculto permanentemente
+- Email con motivo detallado
+- Opción de apelación (formulario contacto)
+
+### Suspendido
+- Perfil oculto temporalmente
+- Motivo: Incumplimiento términos, quejas, etc.
+- Proceso de reactivación según caso
+
+---
+
+## Validaciones Técnicas
+
+### Frontend (Cliente)
+- Validación formato en tiempo real
+- Previsualización de imágenes
+- Progress bar del proceso
+- Guardado automático (localStorage)
+
+### Backend (Servidor)
+- Validación estricta de todos los campos
+- Verificación formato documentos
+- Almacenamiento seguro (S3 o similar)
+- Encriptación datos sensibles
+
+### Base de Datos
+- Transacciones para integridad
+- Índices en campos de búsqueda
+- Soft delete (no eliminar, marcar como eliminado)
+
+---
+
+## Experiencia de Usuario
+
+### Reducción de Fricción
+- **Guardado automático**: No perder progreso
+- **Validación inmediata**: Feedback instantáneo
+- **Ayuda contextual**: Tooltips en campos complejos
+- **Ejemplos**: Imágenes de ejemplo para documentos
+
+### Comunicación Clara
+- **Progreso visible**: "Paso 3 de 8"
+- **Tiempos estimados**: "5 minutos restantes"
+- **Expectativas**: "Verificación en 24-48h"
+- **Siguientes pasos**: Email con instrucciones
+
+---
+
+## Seguridad y Privacidad
+
+### Datos Sensibles
+- **DNI**: Encriptado en reposo
+- **Documentos**: Almacenamiento seguro (S3 con encriptación)
+- **Acceso limitado**: Solo admin y podólogo propietario
+
+### RGPD
+- Consentimiento explícito para tratamiento datos
+- Información clara sobre uso de datos
+- Derecho a eliminación (proceso definido)
+
+---
+
+## Criterios de Aceptación
+
+- [ ] Flujo de registro completo implementado
+- [ ] Validación de datos funcional (frontend + backend)
+- [ ] Subida de documentos operativa
+- [ ] Sistema de verificación manual implementado
+- [ ] Estados de perfil gestionados correctamente
+- [ ] Emails automáticos enviados en cada etapa
+- [ ] Seguridad y privacidad garantizadas
+- [ ] Experiencia de usuario optimizada
+
+---
+
+## Referencias
+
+- `08_sistema_usuarios.mdc` - Autenticación y roles
+- `04_perfil_profesional.mdc` - Resultado del onboarding
+- `15_paginas_legales.mdc` - RGPD y términos
+
+---
+
+**Estado**: ⚪️ Pendiente | **Autor**: Product Team | **Próxima revisión**: Febrero 2026

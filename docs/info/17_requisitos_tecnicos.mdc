@@ -1,0 +1,180 @@
+# 17 - Requisitos Técnicos
+
+**Versión**: 1.0 | **Fecha**: Enero 2026 | **Estado**: ⚪️ Pendiente
+
+---
+
+## Resumen Ejecutivo
+
+Requisitos técnicos no funcionales: SEO Local, Performance, Seguridad, Tech Stack recomendado. Objetivos cuantificables y estrategias de implementación.
+
+---
+
+## Audiencia
+
+- **Desarrolladores**: Implementación técnica
+- **DevOps**: Configuración infraestructura
+- **Product Manager**: Validación de objetivos
+
+---
+
+## SEO Local
+
+### Objetivos
+- **Posicionamiento**: Top 3 búsquedas "podólogo [ciudad]"
+- **Rich Snippets**: Perfiles con structured data
+- **Local Pack**: Aparecer en Google Maps resultados
+
+### Estrategia
+
+#### On-Page SEO
+- **Títulos**: "Podólogo en [Ciudad] | [Nombre]"
+- **Meta descriptions**: 150-160 caracteres, incluir ciudad
+- **H1/H2**: Jerarquía clara, keywords naturales
+- **URLs**: `/podologo/[nombre]-[ciudad]` (slug descriptivo)
+
+#### Structured Data (Schema.org)
+- **LocalBusiness**: Para cada podólogo
+- **MedicalBusiness**: Especialización médica
+- **Review**: Reseñas con rating
+- **BreadcrumbList**: Navegación
+
+#### Contenido
+- **Páginas ciudad**: `/podologos/[ciudad]` (si volumen justifica)
+- **Blog** (post-MVP): Artículos sobre podología
+- **Internal linking**: Enlaces entre páginas relacionadas
+
+#### Technical SEO
+- **Sitemap.xml**: Todas las URLs importantes
+- **Robots.txt**: Permitir indexación
+- **Canonical URLs**: Evitar contenido duplicado
+- **HTTPS**: Obligatorio (SSL/TLS)
+
+---
+
+## Performance
+
+### Objetivos Lighthouse
+- **Performance**: >90
+- **Accessibility**: >90
+- **Best Practices**: >90
+- **SEO**: >90
+
+### Métricas Core Web Vitals
+- **LCP** (Largest Contentful Paint): <2.5s
+- **FID** (First Input Delay): <100ms
+- **CLS** (Cumulative Layout Shift): <0.1
+
+### Optimizaciones
+
+#### Frontend
+- **Code Splitting**: Lazy loading de rutas
+- **Image Optimization**: WebP, lazy loading, sizes
+- **Font Optimization**: Preload críticas, subset
+- **CSS**: Critical CSS inline, resto lazy
+- **JavaScript**: Minificación, tree shaking
+
+#### Backend
+- **Caching**: Redis para queries frecuentes
+- **Database**: Índices optimizados, queries eficientes
+- **API**: Response compression (gzip)
+- **CDN**: Assets estáticos (Vercel/Cloudflare)
+
+#### Monitoring
+- **Real User Monitoring**: Vercel Analytics
+- **Synthetic Monitoring**: Lighthouse CI
+- **Alerts**: Si métricas degradan
+
+---
+
+## Seguridad
+
+### OWASP Top 10
+
+1. **Broken Access Control**: Middleware + Guards, Rate limiting
+2. **Cryptographic Failures**: HTTPS (TLS 1.3), Bcrypt (12 rounds), Secrets en env, Encryption en reposo
+3. **Injection**: Prisma ORM (SQL), Escapar output + CSP (XSS), Validar inputs (Command)
+4. **Insecure Design**: Threat modeling, Security by design, Code reviews
+5. **Security Misconfiguration**: Security headers (HSTS, CSP, X-Frame-Options), CORS, Error handling
+6. **Vulnerable Components**: Auditoría (npm audit), Updates, Snyk/Dependabot
+7. **Authentication Failures**: JWT seguro, Password reset único, MFA (post-MVP)
+8. **Software Integrity**: CI/CD, Signatures, Backups encriptados
+9. **Logging**: Structured (JSON), No datos sensibles, Alertas
+10. **SSRF**: Validar URLs, Whitelist dominios
+
+---
+
+## Tech Stack Recomendado
+
+### Frontend
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Components**: shadcn/ui
+- **Forms**: React Hook Form + Zod
+- **State**: React Context / Zustand (si necesario)
+
+### Backend (BFF)
+- **Framework**: Next.js API Routes
+- **Language**: TypeScript
+- **Validation**: Zod
+- **Auth**: JWT (next-auth opcional)
+
+### Backend (Privado)
+- **Framework**: NestJS
+- **Language**: TypeScript
+- **ORM**: Prisma
+- **Database**: PostgreSQL 15
+- **Cache**: Redis
+- **Auth**: Passport.js + JWT
+
+### Infraestructura
+- **Hosting Frontend**: Vercel
+- **Hosting Backend**: AWS/Heroku/Railway
+- **Database**: AWS RDS / Supabase
+- **Storage**: AWS S3
+- **CDN**: Cloudflare / Vercel Edge
+
+### DevOps
+- **CI/CD**: GitHub Actions
+- **Monitoring**: Vercel Analytics, Sentry
+- **Logs**: Vercel Logs / CloudWatch
+
+---
+
+## Escalabilidad
+
+### Horizontal Scaling
+- **Stateless**: Aplicación sin estado
+- **Load Balancer**: Distribuir carga
+- **Database**: Connection pooling
+- **Cache**: Redis distribuido
+
+### Vertical Scaling
+- **Database**: Optimizar queries, índices
+- **API**: Response caching
+- **CDN**: Assets estáticos
+
+---
+
+## Criterios de Aceptación
+
+- [ ] SEO Local implementado (structured data, meta tags)
+- [ ] Performance objetivos cumplidos (Lighthouse >90)
+- [ ] Seguridad validada (OWASP Top 10)
+- [ ] Tech Stack definido e implementado
+- [ ] Monitoring y alertas configurados
+- [ ] Escalabilidad preparada
+- [ ] Documentación técnica completa
+
+---
+
+## Referencias
+
+- `03_directorio_busqueda.mdc` - SEO de búsqueda
+- `04_perfil_profesional.mdc` - SEO de perfiles
+- `13_integraciones_externas.mdc` - APIs externas
+
+---
+
+**Estado**: ⚪️ Pendiente | **Autor**: Tech Lead + DevOps | **Próxima revisión**: Febrero 2026

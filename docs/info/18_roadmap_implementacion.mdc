@@ -1,0 +1,169 @@
+# 18 - Roadmap de Implementación
+
+**Versión**: 1.0 | **Fecha**: Enero 2026 | **Estado**: ⚪️ Pendiente
+
+---
+
+## Resumen Ejecutivo
+
+Roadmap de desarrollo enfocado en lanzar el buscador primero (core del negocio). Fases priorizadas con hitos claros y estimaciones. Enfoque MVP: funcionalidad mínima viable para validar mercado.
+
+---
+
+## Audiencia
+
+- **Product Manager**: Planificación de releases
+- **Equipo Desarrollo**: Priorización de tareas
+- **Stakeholders**: Expectativas y timeline
+
+---
+
+## Fase 1: Fundación (Semanas 1-4)
+
+### Objetivo
+Infraestructura base y autenticación funcional.
+
+### Tareas
+- [ ] Setup monorepo (client, api, utils)
+- [ ] Configuración Next.js + NestJS
+- [ ] Base de datos PostgreSQL + Prisma
+- [ ] Sistema de usuarios (registro, login)
+- [ ] Autenticación JWT multi-rol
+- [ ] Páginas legales básicas (RGPD)
+
+### Hito
+✅ Usuarios pueden registrarse y autenticarse.
+
+### Estimación
+**4 semanas** | **Equipo**: 2-3 desarrolladores
+
+---
+
+## Fase 2: Core del Negocio (Semanas 5-10) ⭐ CRÍTICO
+
+### Objetivo
+Buscador funcional y perfiles profesionales básicos.
+
+### Tareas
+- [ ] Modelo de datos (podólogos, pacientes, citas)
+- [ ] Onboarding podólogos (registro + verificación)
+- [ ] Búsqueda geolocalizada (Google Maps API)
+- [ ] Filtros de búsqueda (especialidad, precio, rating)
+- [ ] Vista lista y mapa de resultados
+- [ ] Perfil profesional básico (info, fotos, horarios)
+- [ ] Algoritmo de ordenación (Premium primero)
+
+### Hito
+✅ Pacientes pueden buscar y ver podólogos. Podólogos pueden crear perfil.
+
+### Estimación
+**6 semanas** | **Equipo**: 3-4 desarrolladores
+
+---
+
+## Fase 3: Conversión (Semanas 11-14)
+
+### Objetivo
+Sistema de citas y monetización básica.
+
+### Tareas
+- [ ] Sistema de reservas de citas
+- [ ] Integración Stripe (planes Básico/Premium)
+- [ ] Dashboard podólogos (métricas básicas)
+- [ ] Sistema de reseñas (post-cita)
+- [ ] Página Home optimizada
+- [ ] CTAs de conversión (Llamar, Reservar)
+
+### Hito
+✅ Flujo completo: búsqueda → perfil → reserva → pago.
+
+### Estimación
+**4 semanas** | **Equipo**: 3-4 desarrolladores
+
+---
+
+## Fase 4: Refinamiento (Semanas 15-18)
+
+### Objetivo
+Pulir experiencia y cumplir requisitos legales.
+
+### Tareas
+- [ ] Dashboard métricas completo
+- [ ] Páginas informativas (FAQ, Contacto, Nosotros)
+- [ ] Optimización SEO (structured data, meta tags)
+- [ ] Performance optimization (Lighthouse >90)
+- [ ] Testing E2E crítico
+- [ ] Documentación usuario
+
+### Hito
+✅ MVP completo, listo para lanzamiento beta.
+
+### Estimación
+**4 semanas** | **Equipo**: 2-3 desarrolladores
+
+---
+
+## Fase 5: Lanzamiento Beta (Semanas 19-20)
+
+### Objetivo
+Lanzamiento controlado y recolección de feedback.
+
+### Tareas
+- [ ] Seeding de datos (podólogos de prueba)
+- [ ] Testing en producción
+- [ ] Monitoreo y alertas
+- [ ] Recopilación feedback usuarios
+- [ ] Ajustes críticos
+
+### Hito
+✅ Beta pública con usuarios reales.
+
+### Estimación
+**2 semanas** | **Equipo**: Todo el equipo
+
+---
+
+## Post-MVP (Semanas 21+)
+- Internacionalización (Valenciano), App móvil, Chat, Pagos citas, Analytics avanzado
+
+## Priorización MoSCoW
+- **Must Have**: Búsqueda, perfiles, usuarios, citas, monetización
+- **Should Have**: Dashboard completo, reseñas avanzado, SEO profundo
+- **Could Have**: App móvil, chat, múltiples idiomas
+- **Won't Have**: Facturación integrada, marketplace, blog
+
+## Riesgos y Mitigaciones
+1. **Verificación podólogos**: Automatización parcial, validación rápida
+2. **Bajo volumen**: Seeding inicial, incentivos primeros usuarios
+3. **Performance**: Caching, CDN, load testing
+4. **Stripe**: Checkout simple, webhooks robustos
+
+## Métricas de Éxito
+- **Fase 1**: Autenticación 100%, 0 errores críticos
+- **Fase 2**: Búsqueda <300ms, 10 podólogos verificados
+- **Fase 3**: Conversión >10%, 5 suscripciones
+- **Fase 4**: Lighthouse >90, 0 bugs críticos
+- **Fase 5**: 50 usuarios activos, NPS >50
+
+---
+
+## Criterios de Aceptación
+
+- [ ] Roadmap completo y validado
+- [ ] Estimaciones realistas
+- [ ] Hitos claros definidos
+- [ ] Riesgos identificados y mitigados
+- [ ] Métricas de éxito cuantificables
+- [ ] Priorización MoSCoW aplicada
+
+---
+
+## Referencias
+
+- `01_vision_general.mdc` - Objetivos del proyecto
+- `06_modelo_monetizacion.mdc` - Monetización
+- `17_requisitos_tecnicos.mdc` - Requisitos técnicos
+
+---
+
+**Estado**: ⚪️ Pendiente | **Autor**: Product + Tech Lead | **Próxima revisión**: Febrero 2026

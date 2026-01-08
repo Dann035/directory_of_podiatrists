@@ -1,8 +1,0 @@
-
-
-html, body, #__next {
-  height: 100%;
-}
-
-/* Small helpers */
-.container { max-width: 1024px; margin: 0 auto; }

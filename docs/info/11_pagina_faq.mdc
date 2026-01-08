@@ -1,0 +1,172 @@
+# 11 - Página FAQ
+
+**Versión**: 1.0 | **Fecha**: Enero 2026 | **Estado**: ⚪️ Pendiente
+
+---
+
+## Resumen Ejecutivo
+
+Página de preguntas frecuentes organizadas por categorías. Respuestas claras y directas sobre uso de la plataforma, facturación, verificación y políticas. Optimizada para reducir carga de soporte.
+
+---
+
+## Audiencia
+
+- **Usuarios**: Pacientes y podólogos con dudas
+- **Soporte**: Reducción de tickets
+
+---
+
+## Estructura de la Página
+
+### Header
+- Título: "Preguntas Frecuentes"
+- Subtítulo: "Encuentra respuestas rápidas"
+- Buscador FAQ (opcional, post-MVP)
+
+### Categorías
+
+#### 1. Uso de la Plataforma
+**Preguntas**:
+- ¿Cómo busco un podólogo?
+- ¿Cómo reservo una cita?
+- ¿Puedo cancelar una cita?
+- ¿Cómo dejo una reseña?
+- ¿Cómo actualizo mi perfil de paciente?
+
+**Respuestas**: Breves, paso a paso, con enlaces a secciones relevantes.
+
+#### 2. Registro y Verificación (Podólogos)
+**Preguntas**:
+- ¿Cómo me registro como podólogo?
+- ¿Qué documentos necesito?
+- ¿Cuánto tarda la verificación?
+- ¿Qué pasa si mi verificación es rechazada?
+- ¿Puedo apelar una decisión?
+
+**Respuestas**: Detalladas, referencias a `05_onboarding_podologos.mdc`.
+
+#### 3. Planes y Facturación
+**Preguntas**:
+- ¿Cuánto cuesta usar la plataforma?
+- ¿Qué incluye cada plan?
+- ¿Puedo cambiar de plan?
+- ¿Cómo cancelo mi suscripción?
+- ¿Hay período de prueba?
+- ¿Qué métodos de pago aceptan?
+- ¿Facturan con IVA?
+
+**Respuestas**: Precios actualizados, enlaces a `06_modelo_monetizacion.mdc`.
+
+#### 4. Perfiles y Visibilidad
+**Preguntas**:
+- ¿Cómo mejoro mi posicionamiento?
+- ¿Qué es un perfil Premium?
+- ¿Puedo destacar mi perfil?
+- ¿Cómo veo mis métricas?
+
+**Respuestas**: Referencias a planes y dashboard.
+
+#### 5. Privacidad y Seguridad
+**Preguntas**:
+- ¿Mis datos están seguros?
+- ¿Cómo se usan mis datos?
+- ¿Puedo eliminar mi cuenta?
+- ¿Cumplen con RGPD?
+
+**Respuestas**: Referencias a `15_paginas_legales.mdc`.
+
+#### 6. Problemas Técnicos
+**Preguntas**:
+- ¿No puedo iniciar sesión?
+- ¿No recibo el email de verificación?
+- ¿La página no carga correctamente?
+- ¿Cómo cambio mi contraseña?
+
+**Respuestas**: Soluciones paso a paso, enlace a contacto.
+
+---
+
+## Formato de Respuestas
+
+### Estructura
+1. **Respuesta directa**: 1-2 frases
+2. **Detalles**: Pasos o explicación ampliada
+3. **Enlaces**: A páginas relevantes o documentación
+4. **Siguiente paso**: Si aplica, qué hacer después
+
+### Ejemplo
+**P**: ¿Cómo me registro como podólogo?
+
+**R**: Haz clic en "Soy Podólogo" en la página principal y completa el formulario de registro. Necesitarás subir documentos de identificación y tu número de colegiado. El proceso de verificación tarda 24-48 horas.
+
+**Detalles**: [Enlace a guía completa]
+
+**Siguiente paso**: Una vez verificado, podrás configurar tu perfil profesional.
+
+---
+
+## Diseño UI
+
+### Accordion/Expandible
+- Pregunta como título (clic para expandir)
+- Respuesta oculta inicialmente
+- Icono + / - para indicar estado
+- Animación suave al expandir/colapsar
+
+### Búsqueda (Post-MVP)
+- Input de búsqueda en header
+- Filtrado en tiempo real
+- Highlight de términos encontrados
+
+---
+
+## Optimización SEO
+
+### Meta Tags
+- **Title**: "FAQ | Preguntas Frecuentes - Directorio de Podólogos"
+- **Description**: "Respuestas a las preguntas más frecuentes sobre nuestro directorio de podólogos."
+
+### Structured Data
+- **FAQPage**: Schema.org
+- **Question/Answer**: Para cada FAQ
+
+---
+
+## Actualización de Contenido
+
+### Frecuencia
+- **Revisión mensual**: Añadir nuevas preguntas frecuentes
+- **Actualización precios**: Cuando cambien planes
+- **Feedback usuarios**: Incorporar dudas comunes
+
+### Proceso
+1. Analizar tickets de soporte
+2. Identificar preguntas repetidas
+3. Añadir a FAQ
+4. Notificar a usuarios (email opcional)
+
+---
+
+## Criterios de Aceptación
+
+- [ ] Categorías principales implementadas
+- [ ] Respuestas claras y completas
+- [ ] Diseño accordion funcional
+- [ ] Enlaces a páginas relevantes
+- [ ] SEO optimizado (structured data)
+- [ ] Responsive implementado
+- [ ] Contenido actualizado regularmente
+
+---
+
+## Referencias
+
+- `05_onboarding_podologos.mdc` - Registro podólogos
+- `06_modelo_monetizacion.mdc` - Planes y facturación
+- `08_sistema_usuarios.mdc` - Problemas técnicos
+- `15_paginas_legales.mdc` - Privacidad y RGPD
+
+---
+
+**Estado**: ⚪️ Pendiente | **Autor**: Product + Support Team | **Próxima revisión**: Febrero 2026

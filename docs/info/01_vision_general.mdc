@@ -1,0 +1,141 @@
+# 01 - Visión General
+
+**Versión**: 1.0 | **Fecha**: Enero 2026 | **Estado**: ⚪️ Pendiente
+
+---
+
+## Resumen Ejecutivo
+
+MVP de directorio digital para podólogos en España. Plataforma que conecta pacientes con profesionales verificados mediante búsqueda geolocalizada, sistema de citas y perfiles profesionales optimizados para conversión. Modelo de negocio basado en suscripciones para podólogos (Free/Básico/Premium) con perfiles destacados.
+
+**Alcance MVP**: Búsqueda funcional, perfiles profesionales, sistema de usuarios multi-rol, monetización básica, dashboard de métricas.
+
+---
+
+## Audiencia y Stakeholders
+
+- **Equipo de Desarrollo**: Implementación técnica
+- **Product Manager**: Validación de requisitos
+- **Inversores**: Propuesta de valor y modelo de negocio
+- **Usuarios finales**: Pacientes y podólogos
+
+---
+
+## Objetivos del Proyecto
+
+### Objetivo Principal
+Crear el directorio líder de podólogos en España, facilitando la conexión entre pacientes y profesionales verificados.
+
+### Objetivos Específicos
+1. **Conversión**: Maximizar contacto paciente-podólogo (objetivo: 15% tasa conversión)
+2. **Calidad**: Verificación estricta de colegiados y datos profesionales
+3. **Escalabilidad**: Arquitectura preparada para crecimiento horizontal
+4. **Monetización**: Modelo sostenible basado en suscripciones profesionales
+
+---
+
+## Público Objetivo
+
+### Primario
+- **Pacientes**: Personas que buscan servicios podológicos (25-65 años, España)
+- **Podólogos colegiados**: Profesionales que buscan visibilidad y pacientes (todos los niveles)
+
+### Secundario
+- **Administradores**: Gestión y verificación de la plataforma
+- **Inversores**: Validación del modelo de negocio
+
+---
+
+## Propuesta de Valor Única
+
+### Para Pacientes
+- **Búsqueda inteligente**: Filtros por ubicación, especialidades, disponibilidad
+- **Profesionales verificados**: Validación de número de colegiado
+- **Información completa**: Perfiles con fotos, horarios, precios, reseñas
+- **Reserva directa**: Sistema de citas integrado
+
+### Para Podólogos
+- **Visibilidad digital**: Presencia en directorio líder
+- **Gestión de perfil**: Control total sobre información profesional
+- **Métricas de rendimiento**: Dashboard con KPIs (visualizaciones, clics, conversiones)
+- **Planes flexibles**: Desde perfil gratuito hasta premium con destacado
+
+---
+
+## Alcance del MVP
+
+### Incluido
+- Sistema de búsqueda geolocalizada
+- Perfiles profesionales de podólogos
+- Registro y autenticación multi-rol
+- Sistema de suscripciones (3 planes)
+- Dashboard de métricas básico
+- Onboarding de podólogos con verificación
+- Páginas informativas (Home, Contacto, FAQ, Nosotros)
+
+### Excluido (Post-MVP)
+- Sistema de pagos de citas
+- Chat en tiempo real
+- App móvil nativa
+- Sistema de facturación integrado
+- Múltiples idiomas (solo ES en MVP)
+
+---
+
+## Métricas de Éxito
+
+### Producto
+- **Conversión visita → contacto**: 15%
+- **Tasa de registro podólogos**: 100 profesionales en 3 meses
+- **Retención mensual**: 40% usuarios activos
+
+### Negocio
+- **MRR (Monthly Recurring Revenue)**: €5,000 en 6 meses
+- **Suscripciones Premium**: 20% de podólogos registrados
+- **CAC (Customer Acquisition Cost)**: <€50 por podólogo
+
+### Técnico
+- **Performance**: Lighthouse Score >90
+- **Uptime**: 99.5%
+- **Tiempo de respuesta API**: p95 <500ms
+
+---
+
+## Restricciones y Dependencias
+
+### Técnicas
+- Stack: Next.js 14, NestJS, PostgreSQL, Prisma, Tailwindcss, Shadcn/ui
+- Integraciones: Google Maps API, Stripe, Analytics
+- Hosting: Vercel (frontend), AWS/Render (backend)
+
+### Legales
+- RGPD estricto (datos de salud)
+- Verificación de colegiados (colegios oficiales)
+- Términos y condiciones específicos para servicios sanitarios
+
+### Negocio
+- Validación manual inicial de podólogos
+- Presupuesto limitado para marketing inicial
+- Competencia: Doctoralia, TopDoctors (diferenciación por especialización)
+
+---
+
+## Criterios de Aceptación
+
+- [ ] Documentación completa de visión y objetivos
+- [ ] Propuesta de valor definida para cada segmento
+- [ ] Métricas de éxito cuantificables
+- [ ] Alcance MVP claramente delimitado
+- [ ] Stakeholders identificados y validados
+
+---
+
+## Referencias
+
+- `02_arquitectura_informacion.mdc` - Flujos de usuario
+- `06_modelo_monetizacion.mdc` - Modelo de negocio
+- `18_roadmap_implementacion.mdc` - Plan de desarrollo
+
+---
+
+**Estado**: 🔵 En Progreso | **Autor**: Daniel Landa | **Próxima revisión**: Febrero 2026

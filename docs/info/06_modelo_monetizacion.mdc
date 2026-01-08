@@ -1,0 +1,191 @@
+# 06 - Modelo de Monetización
+
+**Versión**: 1.0 | **Fecha**: Enero 2026 | **Estado**: ⚪️ Pendiente
+
+---
+
+## Resumen Ejecutivo
+
+Modelo de suscripción para podólogos con 3 planes (Free, Básico, Premium). Integración con Stripe para pagos recurrentes. Lógica de perfiles destacados y posicionamiento en búsqueda según plan.
+
+---
+
+## Audiencia
+
+- **Product Manager**: Modelo de negocio
+- **Desarrolladores**: Integración Stripe
+- **Inversores**: Revenue streams
+
+---
+
+## Planes de Suscripción
+
+### Plan Free (Gratuito)
+**Precio**: €0/mes
+
+**Incluye**:
+- Perfil básico visible
+- Búsqueda estándar (sin destacado)
+- 1 foto profesional
+- Información de contacto básica
+- Dashboard métricas limitado (últimos 30 días)
+
+**Limitaciones**:
+- Posición baja en resultados
+- Sin badge "Premium"
+- CTAs limitados (solo "Llamar")
+- Sin formulario contacto directo
+
+### Plan Básico
+**Precio**: €29/mes (facturación mensual) o €290/año (ahorro 17%)
+
+**Incluye**:
+- Todo lo del Free +
+- Posición mejorada en búsqueda (+20% visibilidad)
+- Hasta 5 fotos del consultorio
+- CTAs completos (Llamar, Reservar, Email)
+- Dashboard métricas completo (histórico)
+- Soporte email prioritario
+
+**Beneficios**:
+- Más visualizaciones de perfil
+- Mayor tasa de conversión estimada
+
+### Plan Premium
+**Precio**: €79/mes (facturación mensual) o €790/año (ahorro 17%)
+
+**Incluye**:
+- Todo lo del Básico +
+- **Perfil destacado**: Top 3 resultados en búsqueda
+- Badge "Premium" visible
+- Hasta 10 fotos + 1 video presentación
+- Formulario contacto directo desde perfil
+- Analytics avanzado (fuentes tráfico, conversiones)
+- Posicionamiento en categorías especializadas
+- Soporte telefónico prioritario
+- Sin comisiones en reservas (futuro)
+
+**ROI Estimado**:
+- 3-5x más visualizaciones vs Free
+- 2-3x más conversiones vs Básico
+
+---
+
+## Lógica de Posicionamiento
+
+### Algoritmo de Ordenación
+1. **Premium**: Siempre primeros (si aplican filtros)
+2. **Básico**: Posición +20% vs Free
+3. **Free**: Posición estándar (por rating/distancia)
+
+### Factores Adicionales
+- Rating (dentro del mismo plan)
+- Distancia (si geolocalización)
+- Completitud perfil
+- Antigüedad en plataforma
+
+### Ejemplo Visual
+```
+Resultados búsqueda "Podólogo Valencia":
+1. [Premium] Dr. García ⭐⭐⭐⭐⭐ (Badge Premium)
+2. [Premium] Dra. Martínez ⭐⭐⭐⭐
+3. [Premium] Dr. López ⭐⭐⭐⭐⭐
+4. [Básico] Dr. Sánchez ⭐⭐⭐⭐
+5. [Básico] Dra. Torres ⭐⭐⭐
+6. [Free] Dr. Ruiz ⭐⭐⭐⭐⭐
+7. [Free] Dra. Fernández ⭐⭐⭐⭐
+```
+
+---
+
+## Integración Stripe
+
+### Configuración
+- **Productos**: 3 productos (Free/Básico/Premium)
+- **Precios**: Mensual y anual para Básico/Premium
+- **Webhooks**: Eventos de suscripción (created, updated, cancelled)
+
+### Flujo de Pago
+1. Podólogo selecciona plan (Básico/Premium)
+2. Redirect a Stripe Checkout
+3. Pago procesado
+4. Webhook confirma suscripción
+5. Perfil actualizado automáticamente
+6. Email confirmación + factura
+
+### Gestión de Suscripciones
+- **Upgrade**: Cambio de plan (prorrateo)
+- **Downgrade**: Cambio a plan inferior (fin de período actual)
+- **Cancelación**: Acceso hasta fin de período pagado
+- **Renovación**: Automática (tarjeta guardada)
+
+---
+
+## Perfiles Destacados
+
+### Criterios de Destacado
+- Plan Premium activo
+- Perfil completo (>80% campos)
+- Verificado y activo
+- Sin quejas recientes
+
+### Visualización
+- **Badge "Premium"**: Visible en perfil y búsqueda
+- **Top resultados**: Posición garantizada top 3
+- **Sección dedicada**: "Podólogos Premium" en Home (opcional)
+
+---
+
+## Métricas de Monetización
+
+### KPIs Clave
+- **MRR** (Monthly Recurring Revenue): Suma suscripciones activas
+- **Churn Rate**: % cancelaciones mensuales
+- **LTV** (Lifetime Value): Valor promedio por podólogo
+- **CAC** (Customer Acquisition Cost): Coste adquirir podólogo
+- **Conversión Free → Pago**: % que upgradea
+
+### Objetivos MVP (6 meses)
+- **MRR**: €5,000
+- **Podólogos Premium**: 20% de registrados
+- **Churn**: <5% mensual
+- **LTV**: >€500
+
+---
+
+## Estrategia de Precios
+
+### Justificación
+- **Free**: Reducir fricción entrada, generar base usuarios
+- **Básico**: Precio accesible, ROI claro para mayoría
+- **Premium**: Para profesionales que buscan máximo impacto
+
+### Comparativa Competencia
+- Doctoralia: €49-149/mes (más caro)
+- TopDoctors: €39-99/mes (similar)
+- **Nuestra ventaja**: Especialización + precio competitivo
+
+---
+
+## Criterios de Aceptación
+
+- [ ] 3 planes definidos e implementados
+- [ ] Integración Stripe funcional
+- [ ] Algoritmo posicionamiento aplicado
+- [ ] Perfiles destacados visibles
+- [ ] Gestión suscripciones (upgrade/downgrade/cancel)
+- [ ] Dashboard métricas monetización
+- [ ] Facturación automática
+- [ ] Webhooks Stripe configurados
+
+---
+
+## Referencias
+
+- `04_perfil_profesional.mdc` - Diferenciación visual por plan
+- `13_integraciones_externas.mdc` - Configuración Stripe
+- `09_dashboard_metricas.mdc` - Métricas de monetización
+
+---
+
+**Estado**: ⚪️ Pendiente | **Autor**: Product + Finance | **Próxima revisión**: Febrero 2026

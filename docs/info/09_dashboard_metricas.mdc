@@ -1,0 +1,185 @@
+# 09 - Dashboard de Métricas
+
+**Versión**: 1.0 | **Fecha**: Enero 2026 | **Estado**: ⚪️ Pendiente
+
+---
+
+## Resumen Ejecutivo
+
+Dashboard de métricas diferenciado por rol. Podólogos ven KPIs de su perfil (visualizaciones, clics, conversiones). Administradores ven métricas globales del marketplace. Visualizaciones interactivas con gráficos.
+
+---
+
+## Audiencia
+
+- **Podólogos**: Optimización de perfil
+- **Administradores**: Toma de decisiones estratégicas
+- **Desarrolladores**: Implementación de analytics
+
+---
+
+## Dashboard Podólogo
+
+### Métricas Principales (Cards)
+- **Visualizaciones de perfil**: Total + variación % (últimos 30 días)
+- **Clics en teléfono**: Total + tasa conversión
+- **Clics en email**: Total + tasa conversión
+- **Reservas de citas**: Total + variación %
+- **Rating promedio**: Estrellas + número reseñas
+
+### Gráficos Interactivos
+
+#### 1. Visualizaciones en el Tiempo
+- **Tipo**: Línea temporal
+- **Período**: Últimos 30/90 días (selector)
+- **Datos**: Visualizaciones diarias
+- **Insights**: Días de mayor tráfico
+
+#### 2. Fuentes de Tráfico
+- **Tipo**: Pie chart o barras
+- **Categorías**:
+  - Búsqueda directa
+  - Búsqueda filtrada
+  - Enlaces externos
+  - Búsqueda por especialidad
+
+#### 3. Conversiones por Acción
+- **Tipo**: Barras horizontales
+- **Acciones**: Llamar, Email, Reservar
+- **Datos**: Número de clics + tasa conversión
+
+#### 4. Comparativa con Promedio
+- **Tipo**: Barras comparativas
+- **Métricas**: Visualizaciones, clics, conversiones
+- **Benchmark**: Promedio de podólogos mismo plan
+
+### Sección: Reseñas Recientes
+- Lista últimas 5 reseñas
+- Rating + comentario + fecha
+- Opción responder (si plan Premium)
+
+### Sección: Optimización
+- **Sugerencias automáticas**:
+  - "Completa tu biografía" (si <50% completo)
+  - "Añade más fotos" (si <3 fotos)
+  - "Actualiza horarios" (si desactualizados)
+
+---
+
+## Dashboard Admin
+
+### KPIs Globales (Cards)
+- **Total podólogos**: Activos + pendientes verificación
+- **Total pacientes**: Registrados + activos (últimos 30 días)
+- **Total citas**: Reservadas + completadas (mes actual)
+- **MRR**: Monthly Recurring Revenue
+- **Churn rate**: % cancelaciones mensuales
+- **Tasa conversión**: Visitas → Contactos
+
+### Gráficos Administrativos
+
+#### 1. Crecimiento de Usuarios
+- **Tipo**: Línea temporal
+- **Datos**: Registros diarios (podólogos + pacientes)
+- **Período**: Últimos 6 meses
+
+#### 2. Distribución por Plan
+- **Tipo**: Pie chart
+- **Categorías**: Free, Básico, Premium
+- **Datos**: Número podólogos por plan
+
+#### 3. Crecimiento de Ingresos
+- **Tipo**: Línea temporal
+- **Datos**: MRR mensual
+- **Proyección**: Tendencia (opcional)
+
+#### 4. Actividad por Ciudad
+- **Tipo**: Mapa de calor o tabla
+- **Datos**: Número búsquedas, podólogos, citas por ciudad
+- **Orden**: Top 10 ciudades
+
+#### 5. Verificaciones Pendientes
+- **Tipo**: Lista o tabla
+- **Datos**: Podólogos en espera de verificación
+- **Acción**: Botón "Verificar" directo
+
+### Sección: Alertas
+- Podólogos sin verificar >72h
+- Quejas o reseñas reportadas
+- Suscripciones próximas a vencer
+- Errores técnicos recientes
+
+---
+
+## Recolección de Datos
+
+### Eventos Trackeados
+- **Visualización perfil**: Cada vez que se carga perfil
+- **Clic teléfono**: Click en botón "Llamar"
+- **Clic email**: Click en botón "Email"
+- **Clic reservar**: Click en "Reservar Cita"
+- **Búsqueda**: Query + filtros aplicados
+- **Conversión**: Reserva completada
+
+### Almacenamiento
+- **Base de datos**: Tabla `analytics_events`
+- **Campos**: userId, eventType, metadata, timestamp
+- **Retención**: 2 años (RGPD compliant)
+
+### Privacidad
+- **Anonimización**: IPs hasheadas
+- **RGPD**: Consentimiento explícito
+- **Opt-out**: Opción desactivar tracking (dashboard)
+
+---
+
+## Visualización Técnica
+
+### Librerías Recomendadas
+- **Gráficos**: Recharts o Chart.js
+- **Tablas**: TanStack Table
+- **Mapas**: Google Maps API (si aplica)
+
+### Performance
+- **Carga inicial**: <2s
+- **Actualización datos**: Polling cada 5min o WebSocket
+- **Caché**: Datos históricos cacheados 15min
+
+---
+
+## Exportación de Datos
+
+### Podólogos
+- **Formato**: CSV o PDF
+- **Datos**: Métricas período seleccionado
+- **Frecuencia**: Manual (botón "Exportar")
+
+### Administradores
+- **Formato**: CSV, PDF, Excel
+- **Datos**: KPIs globales, reportes personalizados
+- **Frecuencia**: Manual o programado (email semanal)
+
+---
+
+## Criterios de Aceptación
+
+- [ ] Dashboard podólogo implementado
+- [ ] Dashboard admin implementado
+- [ ] Métricas principales visibles
+- [ ] Gráficos interactivos funcionales
+- [ ] Recolección de datos operativa
+- [ ] Exportación de datos funcional
+- [ ] Performance objetivos cumplidos
+- [ ] Privacidad y RGPD garantizados
+
+---
+
+## Referencias
+
+- `04_perfil_profesional.mdc` - Fuente de métricas
+- `06_modelo_monetizacion.mdc` - MRR y planes
+- `13_integraciones_externas.mdc` - Analytics externos
+
+---
+
+**Estado**: ⚪️ Pendiente | **Autor**: Product + Data Team | **Próxima revisión**: Febrero 2026

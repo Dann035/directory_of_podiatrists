@@ -1,0 +1,142 @@
+# 10 - Página de Contacto
+
+**Versión**: 1.0 | **Fecha**: Enero 2026 | **Estado**: ⚪️ Pendiente
+
+---
+
+## Resumen Ejecutivo
+
+Página de contacto para soporte técnico y comercial. Formulario de contacto, información de contacto directo y FAQ básica. Optimizada para resolver dudas rápidamente.
+
+---
+
+## Audiencia
+
+- **Usuarios**: Pacientes y podólogos con dudas
+- **Soporte**: Equipo de atención al cliente
+
+---
+
+## Estructura de la Página
+
+### Header
+- Título: "Contacta con Nosotros"
+- Subtítulo: "Estamos aquí para ayudarte"
+
+### Formulario de Contacto
+- **Campos**:
+  - Nombre (obligatorio)
+  - Email (obligatorio, validación formato)
+  - Teléfono (opcional)
+  - Tipo de consulta (dropdown):
+    - Soporte técnico
+    - Consulta comercial
+    - Verificación podólogo
+    - Queja o sugerencia
+    - Otro
+  - Mensaje (obligatorio, máx 1000 caracteres)
+  - Checkbox RGPD (obligatorio)
+
+- **Validación**:
+  - Frontend: Validación en tiempo real
+  - Backend: Validación estricta server-side
+
+- **Envío**:
+  - POST a `/api/v1/contact`
+  - Email automático a soporte
+  - Email confirmación a usuario
+  - Mensaje éxito: "Tu mensaje ha sido enviado. Te responderemos en 24-48h."
+
+### Información de Contacto Directo
+- **Email**: soporte@podologiaconnect.com
+- **Teléfono**: +34 XXX XXX XXX (horario: L-V 9:00-18:00)
+- **Dirección**: (si aplica, opcional)
+
+### Sección: Tipos de Consulta
+- **Soporte Técnico**: Problemas con la plataforma
+- **Consulta Comercial**: Información sobre planes
+- **Verificación Podólogo**: Dudas sobre proceso verificación
+- **Queja o Sugerencia**: Feedback sobre el servicio
+
+### Sección: Tiempos de Respuesta
+- **Soporte técnico**: 24-48 horas
+- **Consulta comercial**: 48-72 horas
+- **Verificación**: 24 horas (urgente)
+- **Quejas**: 72 horas
+
+---
+
+## Integración con Sistema
+
+### Backend
+- Endpoint: `POST /api/v1/contact`
+- Validación: Zod schema
+- Almacenamiento: Tabla `contact_messages`
+- Email: SendGrid o similar
+
+### Notificaciones
+- **Usuario**: Email confirmación inmediato
+- **Soporte**: Email con detalles del mensaje
+- **Admin**: Notificación en dashboard (opcional)
+
+---
+
+## FAQ Básica
+
+### Preguntas Frecuentes (Top 5)
+1. "¿Cómo busco un podólogo?"
+2. "¿Cómo me registro como podólogo?"
+3. "¿Cuánto cuesta usar la plataforma?"
+4. "¿Cómo cancelo mi suscripción?"
+5. "¿Mis datos están seguros?"
+
+- **Respuestas**: Breves, directas
+- **Enlaces**: A páginas relevantes (FAQ completa, términos)
+
+---
+
+## Optimización SEO
+
+### Meta Tags
+- **Title**: "Contacto | Directorio de Podólogos"
+- **Description**: "Contacta con nuestro equipo. Soporte técnico y comercial disponible."
+
+### Structured Data
+- **ContactPage**: Schema.org
+- **Organization**: Información empresa
+
+---
+
+## Responsive Design
+
+### Desktop
+- Formulario centrado, 2 columnas (form + info)
+- Información contacto sidebar
+
+### Mobile
+- Formulario full-width
+- Información contacto debajo formulario
+
+---
+
+## Criterios de Aceptación
+
+- [ ] Formulario de contacto funcional
+- [ ] Validación frontend + backend
+- [ ] Emails automáticos enviados
+- [ ] Información contacto visible
+- [ ] FAQ básica incluida
+- [ ] Responsive implementado
+- [ ] SEO optimizado
+
+---
+
+## Referencias
+
+- `11_pagina_faq.mdc` - FAQ completa
+- `15_paginas_legales.mdc` - RGPD y privacidad
+- `08_sistema_usuarios.mdc` - Autenticación (si login requerido)
+
+---
+
+**Estado**: ⚪️ Pendiente | **Autor**: UX Team | **Próxima revisión**: Febrero 2026

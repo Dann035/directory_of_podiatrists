@@ -1,0 +1,155 @@
+# 15 - Páginas Legales
+
+**Versión**: 1.0 | **Fecha**: Enero 2026 | **Estado**: ⚪️ Pendiente
+
+---
+
+## Resumen Ejecutivo
+
+Páginas legales obligatorias: Política de Privacidad (RGPD estricto por datos de salud), Política de Cookies, Términos y Condiciones. Cumplimiento normativo español y europeo.
+
+---
+
+## Audiencia
+
+- **Usuarios**: Información sobre uso de datos
+- **Legal**: Cumplimiento normativo
+- **Desarrolladores**: Implementación de consentimientos
+
+---
+
+## Política de Privacidad
+
+### Contenido Obligatorio (RGPD)
+
+#### 1. Responsable
+- Empresa, CIF/NIF, dirección, email: privacidad@podologiaconnect.com, DPO (si aplica)
+
+#### 2. Datos Recopilados
+- **Pacientes**: Email, nombre, teléfono, fecha nacimiento (opc), historial citas
+- **Podólogos**: Datos personales + profesionales (DNI, colegiado, documentos)
+- **Técnicos**: IP, cookies, dispositivo, navegador
+
+#### 3. Finalidad
+- Servicio (citas, búsqueda), comunicación (emails), mejora (analytics), legal
+
+#### 4. Base Legal
+- Consentimiento (datos salud), ejecución contrato, interés legítimo, obligación legal
+
+#### 5. Conservación
+- Activos mientras cuenta activa, eliminación 3 años post-cierre, anonimización para estadísticas
+
+#### 6. Derechos Usuario
+- Acceso, rectificación, supresión, portabilidad (JSON/CSV), oposición, limitación
+
+#### 7. Transferencias
+- AWS S3 (UE), Stripe (RGPD), Google Analytics (IP anonimizada)
+
+#### 8. Seguridad
+- Encriptación, acceso limitado, auditorías periódicas
+
+---
+
+## Política de Cookies
+
+### Tipos de Cookies
+
+#### Cookies Técnicas (Necesarias)
+- **Sesión**: Mantener login
+- **Seguridad**: CSRF tokens
+- **No requieren consentimiento**
+
+#### Cookies Analíticas
+- **Google Analytics**: Tracking uso
+- **Requieren consentimiento**
+- **IP anonimizada**
+
+#### Cookies de Marketing (Post-MVP)
+- **Publicidad**: Si se implementa
+- **Requieren consentimiento explícito**
+
+### Banner de Cookies
+- **Primera visita**: Mostrar banner
+- **Opciones**: Aceptar todas / Personalizar / Rechazar
+- **Persistencia**: Guardar preferencia (cookie)
+- **Renovar consentimiento**: Opción cambiar preferencias
+
+### Implementación Técnica
+- **Banner**: Componente React
+- **Consentimiento**: Almacenado en cookie `cookie_consent`
+- **Scripts condicionales**: Cargar solo si consentido
+
+---
+
+## Términos y Condiciones
+
+1. **Aceptación**: Uso implica aceptación, mayores 18 años
+2. **Servicio**: Directorio podólogos (no consulta médica), podólogos responsables de servicios
+3. **Registro**: Datos veraces, una cuenta por persona, seguridad contraseña
+4. **Uso**: Prohibido fraudulento/spam/ilegal, reseñas veraces, respeto propiedad intelectual
+5. **Suscripciones**: Descripción planes, renovación automática, cancelación, reembolsos según caso
+6. **Responsabilidad**: Plataforma intermediario, "best effort", usuario responsable backup
+7. **Modificaciones**: Términos pueden cambiar (notificación email), continuar uso = aceptación
+8. **Ley**: Jurisdicción España, legislación ES/EU, arbitraje o tribunales
+
+---
+
+## Consentimientos RGPD
+
+### Formularios de Registro
+- **Checkbox obligatorio**: "Acepto Política de Privacidad"
+- **Checkbox obligatorio**: "Acepto Términos y Condiciones"
+- **Checkbox opcional**: "Acepto recibir comunicaciones comerciales"
+
+### Banner Cookies
+- **Consentimiento granular**: Por tipo de cookie
+- **Revocable**: Cambiar preferencias en cualquier momento
+
+### Almacenamiento
+- **Base de datos**: Registrar consentimientos con timestamp
+- **Auditoría**: Mantener registro de cambios
+
+---
+
+## Enlaces y Ubicación
+
+### Footer
+- **Enlaces permanentes**: A las 3 páginas legales
+- **Visible**: En todas las páginas
+
+### Formularios
+- **Enlaces**: A políticas relevantes
+- **Checkboxes**: Obligatorios antes de submit
+
+---
+
+## Actualización de Contenido
+
+### Frecuencia
+- **Revisión legal**: Anual o cuando cambie normativa
+- **Comunicación**: Email a usuarios si cambios significativos
+- **Versionado**: Mantener historial de versiones
+
+---
+
+## Criterios de Aceptación
+
+- [ ] Política de Privacidad completa y RGPD compliant
+- [ ] Política de Cookies implementada
+- [ ] Términos y Condiciones completos
+- [ ] Banner de cookies funcional
+- [ ] Consentimientos registrados en DB
+- [ ] Enlaces visibles en footer
+- [ ] Revisión legal validada
+
+---
+
+## Referencias
+
+- `08_sistema_usuarios.mdc` - Gestión de consentimientos
+- `10_pagina_contacto.mdc` - Ejercicio de derechos RGPD
+- `17_requisitos_tecnicos.mdc` - Seguridad técnica
+
+---
+
+**Estado**: ⚪️ Pendiente | **Autor**: Legal + Product Team | **Próxima revisión**: Febrero 2026

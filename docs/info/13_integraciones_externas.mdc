@@ -1,0 +1,188 @@
+# 13 - Integraciones Externas
+
+**Versión**: 1.0 | **Fecha**: Enero 2026 | **Estado**: ⚪️ Pendiente
+
+---
+
+## Resumen Ejecutivo
+
+Documentación de integraciones con servicios externos: Google Maps API (geolocalización y mapas), Analytics (tracking), Stripe (pagos), y otros servicios necesarios. Configuración, uso y manejo de errores.
+
+---
+
+## Audiencia
+
+- **Desarrolladores**: Implementación de integraciones
+- **DevOps**: Configuración de APIs y keys
+- **Product Manager**: Dependencias externas
+
+---
+
+## Google Maps API
+
+### Servicios Utilizados
+- **Geocoding API**: Convertir direcciones a coordenadas
+- **Places API**: Autocompletado de ciudades/direcciones
+- **Maps JavaScript API**: Visualización de mapas interactivos
+
+### Configuración
+- **API Key**: Variable `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY`
+- **Restricciones**: Por dominio (producción) y localhost (desarrollo)
+- **Cuotas**: Monitorear uso diario (límite free tier)
+
+### Uso en la Aplicación
+- **Búsqueda**: Autocompletado ciudades en buscador
+- **Perfiles**: Mapa con ubicación consultorio
+- **Geolocalización**: Detección automática ubicación usuario
+
+### Manejo de Errores
+- **API Key inválida**: Mensaje error, fallback a búsqueda manual
+- **Cuota excedida**: Alertar admin, desactivar funcionalidad temporalmente
+- **Sin conexión**: Búsqueda manual obligatoria
+
+---
+
+## Stripe (Pasarela de Pago)
+
+### Configuración
+- **API Keys**: 
+  - `STRIPE_SECRET_KEY` (server-side)
+  - `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` (client-side)
+- **Webhook Secret**: `STRIPE_WEBHOOK_SECRET`
+- **Modo**: Test (desarrollo) / Live (producción)
+
+### Flujo de Pago
+1. Usuario selecciona plan (Básico/Premium)
+2. Crear Checkout Session (Stripe)
+3. Redirect a Stripe Checkout
+4. Usuario completa pago
+5. Webhook confirma suscripción
+6. Actualizar perfil podólogo automáticamente
+
+### Webhooks Manejados
+- `checkout.session.completed`: Suscripción creada
+- `customer.subscription.updated`: Plan cambiado
+- `customer.subscription.deleted`: Suscripción cancelada
+- `invoice.payment_failed`: Pago fallido
+
+### Endpoint Webhook
+- **URL**: `/api/v1/webhooks/stripe`
+- **Validación**: Verificar firma webhook
+- **Idempotencia**: Procesar eventos una sola vez
+
+---
+
+## Analytics
+
+### Google Analytics 4 (GA4)
+- **Measurement ID**: `NEXT_PUBLIC_GA_MEASUREMENT_ID`
+- **Eventos trackeados**:
+  - `search_performed`: Búsqueda realizada
+  - `profile_viewed`: Perfil visto
+  - `contact_clicked`: Clic en contacto
+  - `appointment_booked`: Cita reservada
+  - `subscription_started`: Suscripción iniciada
+
+### Configuración
+- **Privacy**: RGPD compliant (consentimiento)
+- **IP Anonymization**: Activada
+- **Data Retention**: 14 meses (mínimo GA4)
+
+---
+
+## Email (SendGrid o Similar)
+
+### Configuración
+- **API Key**: `SENDGRID_API_KEY`
+- **From Email**: `EMAIL_FROM` (noreply@podologiaconnect.com)
+- **Templates**: Plantillas para emails comunes
+
+### Emails Enviados
+- **Verificación email**: Registro usuario
+- **Recuperación contraseña**: Reset password
+- **Confirmación cita**: Reserva completada
+- **Bienvenida podólogo**: Post-verificación
+- **Suscripción confirmada**: Pago exitoso
+- **Contacto**: Formulario contacto
+
+### Manejo de Errores
+- **Rate limiting**: Cola de emails si excede límite
+- **Bounces**: Marcar email como inválido
+- **Fallback**: Log error, notificar admin
+
+---
+
+## Almacenamiento (AWS S3 o Similar)
+
+### Configuración
+- **Access Key**: `AWS_ACCESS_KEY_ID`
+- **Secret Key**: `AWS_SECRET_ACCESS_KEY`
+- **Bucket**: `AWS_S3_BUCKET`
+- **Region**: `AWS_REGION` (eu-west-1)
+
+### Uso
+- **Documentos podólogos**: DNI, títulos, certificados
+- **Fotos profesionales**: Imágenes de perfil y consultorio
+- **Videos**: Presentaciones (plan Premium)
+
+### Seguridad
+- **Encriptación**: S3 server-side encryption
+- **Acceso**: Pre-signed URLs (temporales)
+- **CORS**: Configurado para dominio permitido
+
+---
+
+## Variables de Entorno
+
+### Desarrollo
+- Archivo `.env` en raíz del proyecto
+- Keys de test/sandbox
+- No commitear a repositorio
+
+### Producción
+- Variables en plataforma hosting (Vercel, AWS, etc.)
+- Keys de producción
+- Rotación periódica de keys
+
+### Validación
+- **Zod schema**: Validar todas las variables al inicio
+- **Error claro**: Si falta variable crítica, fallar rápido
+
+---
+
+## Monitoreo y Alertas
+
+### Health Checks
+- **Endpoints**: Verificar disponibilidad APIs externas
+- **Frecuencia**: Cada 5 minutos
+- **Alertas**: Email/Slack si falla
+
+### Métricas
+- **Tasa de error**: % requests fallidos
+- **Latencia**: Tiempo respuesta APIs
+- **Cuotas**: Uso vs límites (Google Maps, Stripe)
+
+---
+
+## Criterios de Aceptación
+
+- [ ] Google Maps API integrado y funcional
+- [ ] Stripe configurado y procesando pagos
+- [ ] Analytics trackeando eventos clave
+- [ ] Emails enviándose correctamente
+- [ ] Almacenamiento configurado y seguro
+- [ ] Variables de entorno validadas
+- [ ] Manejo de errores implementado
+- [ ] Monitoreo y alertas configurados
+
+---
+
+## Referencias
+
+- `06_modelo_monetizacion.mdc` - Uso de Stripe
+- `03_directorio_busqueda.mdc` - Uso de Google Maps
+- `17_requisitos_tecnicos.mdc` - Seguridad y performance
+
+---
+
+**Estado**: ⚪️ Pendiente | **Autor**: Backend + DevOps Team | **Próxima revisión**: Febrero 2026

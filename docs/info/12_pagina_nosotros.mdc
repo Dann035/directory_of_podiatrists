@@ -1,0 +1,147 @@
+# 12 - Página Nosotros
+
+**Versión**: 1.0 | **Fecha**: Enero 2026 | **Estado**: ⚪️ Pendiente
+
+---
+
+## Resumen Ejecutivo
+
+Página institucional que genera confianza y credibilidad. Información sobre la empresa, misión, valores y equipo. Optimizada para construir autoridad en el sector podológico.
+
+---
+
+## Audiencia
+
+- **Usuarios**: Pacientes y podólogos que buscan confianza
+- **Inversores**: Información sobre la empresa
+- **Medios**: Información para prensa
+
+---
+
+## Estructura de la Página
+
+### Hero Section
+- **Título**: "Sobre Nosotros"
+- **Subtítulo**: Misión o valor principal
+- **Imagen**: Equipo o oficina (opcional)
+
+### Sección: Nuestra Historia
+- **Origen**: Cómo y por qué nació la plataforma
+- **Timeline**: Hitos importantes (si aplica)
+- **Tono**: Personal, auténtico
+
+### Sección: Misión
+- **Qué hacemos**: Descripción clara del servicio
+- **Para quién**: Pacientes y podólogos
+- **Objetivo**: Conectar profesionales con pacientes
+
+### Sección: Valores
+- **3-4 valores principales**:
+  1. **Calidad**: Profesionales verificados
+  2. **Transparencia**: Sin comisiones ocultas
+  3. **Innovación**: Tecnología al servicio de la salud
+  4. **Confianza**: Datos protegidos, RGPD compliant
+
+- **Layout**: Cards con iconos + texto
+
+### Sección: Equipo (Opcional)
+- **Fundadores/Equipo clave**: Fotos + biografías breves
+- **Expertise**: Experiencia relevante
+- **Layout**: Grid de tarjetas
+
+### Sección: Compromiso
+- **RGPD**: Cumplimiento estricto
+- **Verificación**: Proceso riguroso de podólogos
+- **Soporte**: Atención al cliente prioritaria
+
+### Sección: Contacto
+- **CTA**: "¿Tienes preguntas? Contáctanos"
+- **Enlace**: A página de contacto
+
+---
+
+## Elementos de Confianza
+
+### Certificaciones (Si aplica)
+- Logos de certificaciones
+- Partnerships con colegios profesionales
+- Badges de seguridad (SSL, RGPD)
+
+### Testimonios (Opcional)
+- Testimonios de podólogos
+- Testimonios de pacientes
+- Casos de éxito (post-MVP)
+
+### Números
+- "X Podólogos Verificados"
+- "X Citas Reservadas"
+- "X Ciudades Cubiertas"
+- "X Años de Experiencia" (si aplica)
+
+---
+
+## Optimización SEO
+
+### Meta Tags
+- **Title**: "Sobre Nosotros | Directorio de Podólogos"
+- **Description**: "Conoce nuestra misión, valores y compromiso con la podología en España."
+
+### Structured Data
+- **Organization**: Schema.org
+- **AboutPage**: Información adicional
+
+### Contenido
+- **H1**: Título principal
+- **H2**: Secciones principales
+- **Texto descriptivo**: 300-500 palabras sobre la empresa
+
+---
+
+## Responsive Design
+
+### Desktop
+- Layout 2 columnas en secciones
+- Imágenes grandes
+- Espaciado generoso
+
+### Mobile
+- Layout 1 columna
+- Imágenes adaptadas
+- Texto legible
+
+---
+
+## Tono y Estilo
+
+### Tono
+- **Profesional**: Serio pero accesible
+- **Cercano**: No excesivamente corporativo
+- **Transparente**: Honesto sobre el servicio
+
+### Estilo Visual
+- **Colores**: Paleta de marca
+- **Tipografía**: Legible, profesional
+- **Imágenes**: Auténticas, no stock genéricas
+
+---
+
+## Criterios de Aceptación
+
+- [ ] Secciones principales implementadas
+- [ ] Elementos de confianza visibles
+- [ ] Tono y estilo consistentes
+- [ ] SEO optimizado
+- [ ] Responsive implementado
+- [ ] Enlaces a contacto y otras páginas
+
+---
+
+## Referencias
+
+- `10_pagina_contacto.mdc` - Enlace a contacto
+- `15_paginas_legales.mdc` - RGPD y políticas
+- `01_vision_general.mdc` - Misión y valores
+
+---
+
+**Estado**: ⚪️ Pendiente | **Autor**: Marketing + Product Team | **Próxima revisión**: Febrero 2026

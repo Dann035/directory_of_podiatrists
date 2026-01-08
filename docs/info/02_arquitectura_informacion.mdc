@@ -1,0 +1,195 @@
+# 02 - Arquitectura de Información
+
+**Versión**: 1.0 | **Fecha**: Enero 2026 | **Estado**: ⚪️ Pendiente
+
+---
+
+## Resumen Ejecutivo
+
+Estructura de navegación, sitemap y flujos de usuario diferenciados por rol (Paciente, Podólogo, Admin). Arquitectura optimizada para conversión con búsqueda como punto de entrada principal. Separación clara entre área pública y privada.
+
+---
+
+## Audiencia
+
+- **UX/UI Designers**: Estructura de navegación
+- **Desarrolladores Frontend**: Implementación de rutas
+- **Product Manager**: Validación de flujos
+
+---
+
+## Sitemap
+
+### Área Pública
+```
+/ (Home)
+├── /buscar (Directorio - Búsqueda)
+│   ├── /buscar?ciudad=...
+│   ├── /buscar?provincia=...
+│   └── /buscar?codigo-postal=...
+├── /podologo/[slug] (Perfil Profesional)
+├── /contacto
+├── /faq
+├── /nosotros
+└── /legal/*
+    ├── /legal/privacidad
+    ├── /legal/cookies
+    └── /legal/terminos
+```
+
+### Autenticación Unificada
+```
+/auth/login-registro     # Formulario unificado: selecciona "Paciente" o "Podólogo"
+```
+- El usuario elige su rol durante el registro (Paciente o Podólogo).
+- Según el rol seleccionado, el formulario solicita los campos requeridos:
+  - **Paciente:** nombre, email, contraseña
+  - **Podólogo:** nombre, email, contraseña, número de colegiado, documentos verificatorios
+- El mismo endpoint procesa login y registro para ambos roles.
+- Tras autenticación/registro, se genera un token JWT guardado en cookie httpOnly.
+- El token contiene el campo `role` que determina el dashboard/área mostrada.
+
+### Área Privada - Acceso según Role (Basado en JWT.role)
+#### Si `role === "PACIENTE"`:
+```
+/dashboard/paciente
+├── /dashboard/paciente/citas
+├── /dashboard/paciente/reseñas
+└── /dashboard/paciente/perfil
+```
+
+#### Si `role === "PODOLOGO"`:
+```
+/onboarding                # Si es primera vez o falta verificación colegiado
+/dashboard/podologo
+├── /dashboard/podologo/perfil
+├── /dashboard/podologo/metricas
+├── /dashboard/podologo/suscripcion
+└── /dashboard/podologo/configuracion
+```
+
+#### Si `role === "ADMIN"`:
+```
+/dashboard/admin
+├── /dashboard/admin/usuarios
+├── /dashboard/admin/podologos
+├── /dashboard/admin/verificaciones
+└── /dashboard/admin/metricas
+```
+
+---
+
+## Flujos de Usuario
+
+### Flujo 1: Paciente busca podólogo
+1. Llega a Home → Ve buscador prominente
+2. Introduce ciudad/provincia/código postal
+3. Ve lista/mapa de podólogos disponibles
+4. Filtra por especialidad, disponibilidad, precio
+5. Clic en perfil profesional
+6. Ve información completa + CTAs (Llamar, Email, Reservar)
+7. **Conversión**: Contacta o reserva cita
+
+### Flujo 2: Podólogo se registra
+1. Clic en "Soy Podólogo" (Home o header)
+2. Formulario registro (email, password, datos básicos)
+3. Subida documentos (DNI, título, número colegiado)
+4. Verificación manual por admin (24-48h)
+5. Email confirmación + acceso dashboard
+6. Configuración perfil profesional
+7. Elección plan (Free/Básico/Premium)
+8. Perfil activo y visible
+
+### Flujo 3: Podólogo gestiona perfil
+1. Login → Dashboard podólogo
+2. Sección "Mi Perfil"
+3. Edita información, fotos, horarios, precios
+4. Guarda cambios → Preview en tiempo real
+5. Ve métricas dependiendo de su plan de pago: visualizaciones, clics, conversiones
+
+### Flujo 4: Paciente reserva cita
+1. En perfil podólogo → CTA "Reservar Cita"
+2. Login/Registro (si no autenticado)
+3. Selecciona fecha/hora disponible
+4. Confirma reserva
+5. Email confirmación (paciente + podólogo)
+6. Aparece en dashboard ambos usuarios
+
+---
+
+## Navegación Principal
+
+### Header (Público)
+- Logo → Home
+- Buscador (prominente)
+- "Soy Podólogo" (CTA)
+- "Iniciar Sesión" / "Registrarse"
+
+### Header (Autenticado - Paciente)
+- Logo → Home
+- Buscador
+- "Mis Citas" (dropdown)
+- Avatar → Dashboard / Cerrar Sesión
+
+### Header (Autenticado - Podólogo)
+- Logo → Home
+- "Mi Perfil" → Dashboard
+- "Métricas" → Dashboard métricas
+- Avatar → Configuración / Cerrar Sesión
+
+---
+
+## Estructura de Información
+
+### Jerarquía de Contenido
+1. **Nivel 1**: Home (punto de entrada)
+2. **Nivel 2**: Búsqueda (función principal)
+3. **Nivel 3**: Perfil profesional (conversión)
+4. **Nivel 4**: Dashboard (gestión)
+
+### Principios de Organización
+- **Búsqueda primero**: Acceso directo desde cualquier página
+- **Progresión clara**: Público → Registro → Privado
+- **Contexto preservado**: Breadcrumbs y navegación contextual
+- **CTAs visibles**: Botones de acción siempre accesibles
+
+---
+
+## Flujos de Error
+
+### Búsqueda sin resultados
+- Mensaje claro: "No encontramos podólogos en tu zona"
+- Sugerencias: Ampliar búsqueda, cambiar ubicación
+- CTA: "Notificarme cuando haya disponibilidad"
+
+### Podólogo no verificado
+- Estado: Perfil oculto hasta verificación
+- Dashboard muestra: "En espera de verificación"
+- Email automático cuando se aprueba
+
+### Sesión expirada
+- Redirect a login con mensaje
+- Preservar URL destino para post-login
+
+---
+
+## Criterios de Aceptación
+
+- [ ] Sitemap completo y validado
+- [ ] Flujos principales documentados
+- [ ] Navegación clara y consistente
+- [ ] Flujos de error manejados
+- [ ] Separación roles implementada
+- [ ] CTAs optimizados para conversión
+
+---
+
+## Referencias
+
+- `03_directorio_busqueda.mdc` - Lógica de búsqueda
+- `04_perfil_profesional.mdc` - Estructura de perfil
+- `08_sistema_usuarios.mdc` - Autenticación y roles
+
+---
+
+**Estado**: ⚪️ Pendiente | **Autor**: UX Team | **Próxima revisión**: Febrero 2026

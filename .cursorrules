@@ -1,0 +1,207 @@
+# Cursor Rules - MVP Directorio de Podólogos
+
+## 🏗️ Arquitectura: BFF Pattern
+
+**Flujo**: Cliente → Next.js API Routes (`/api/v1/...`) → NestJS Backend (privado) → DB
+
+**Reglas Críticas:**
+- ❌ Cliente NUNCA llama directamente a NestJS
+- ✅ Usa SIEMPRE pnpm y pnpx (NUNCA npm/npx)
+- ✅ Cliente siempre llama a Next.js API Routes
+- ✅ Next.js API Routes llaman internamente a NestJS (BACKEND_API_URL)
+- ✅ NestJS NO accesible públicamente, solo desde servidor Next.js
+- ✅ Variables `BACKEND_API_URL` y `BACKEND_API_KEY` solo server-side (nunca NEXT_PUBLIC_*)
+- ✅ Variables de entorno en UPPER_SNAKE_CASE (ej: `DATABASE_URL`, `JWT_SECRET`)
+- ✅ Nunca crees datos con mock, usa seeding para generar todos los datos falsos
+- Una tarea no se puede marcar como completada si no supera el 85% de los test
+
+## 📁 Estructura del Monorepo
+
+```
+/
+├── client/          # Next.js (Frontend + BFF Layer)
+│   └── app/api/v1/  # Next.js API Routes (BFF)
+├── api/             # NestJS (Backend privado)
+│   └── src/modules/ # Módulos NestJS
+├── utils/           # Código compartido
+│   ├── lib/         # Librerías compartidas
+│   └── config/      # Configuraciones compartidas
+├── config/           # Configuraciones globales
+├── docs/             # Documentación del proyecto
+│   └── plans/       # Registros de implementación
+├── .env              # Variables de entorno (raíz)
+├── package.json      # Scripts raíz + dependencias compartidas
+└── pnpm-workspace.yaml
+```
+
+## 📝 Convenciones
+
+### Naming
+- Archivos: snake_case (`user_service.ts`)
+- Clases: PascalCase (`UserService`)
+- Funciones/Variables: camelCase (`getUserById`)
+- Constantes: UPPER_SNAKE_CASE (`MAX_RETRIES`)
+- Tipos: PascalCase (`UserDto`)
+- Variables de entorno: UPPER_SNAKE_CASE (`DATABASE_URL`, `JWT_SECRET`)
+
+### Documentación
+- **Naming**: `##_snake_case.md` (ej: `01_prd.md`, `02_arquitectura.md`)
+- **Límite**: Máximo 200 líneas por archivo (excepto `.cursorrules`, `CLOUDE.md`, `.github/`)
+- **Si excede**: Crear archivo secundario con indexación
+- **Estilo**: Directo, preciso, información relevante, estilo SaaS-técnico (PRD para inversores)
+- **Ubicación**: `docs/` en raíz del proyecto
+
+### Estructura de Código Compartido
+
+**`/utils/lib`**: Librerías compartidas entre client y api
+- Funciones utilitarias
+- Helpers comunes
+- Validadores compartidos
+
+**`/utils/config`**: Configuraciones compartidas
+- Configuraciones de DB, JWT, Stripe, etc.
+- Variables de entorno validadas y tipadas
+- **NO** duplicar configs en client o api
+- Importar siempre desde `/utils/config`
+
+**`/config`** (raíz): Configuraciones globales
+- Configuraciones de build
+- Configuraciones de herramientas
+- No variables de entorno (estas van en `.env`)
+
+## 🚀 Scripts del Monorepo
+
+**package.json raíz** debe contener scripts para:
+- Levantar solo client: `pnpm run dev:client`
+- Levantar solo api: `pnpm run dev:api`
+- Levantar ambos: `pnpm run dev:all` (usando concurrently)
+
+**Cada proyecto** (client/api) tiene su propio `package.json` con lo indispensable.
+
+**Dependencias compartidas** van en `package.json` raíz.
+
+## 🎯 Principios SOLID
+
+- **S**ingle Responsibility: Una responsabilidad por clase/función
+- **O**pen/Closed: Abierto a extensión, cerrado a modificación
+- **L**iskov Substitution: Subtipos sustituibles
+- **I**nterface Segregation: Interfaces específicas
+- **D**ependency Inversion: Depender de abstracciones
+
+## 🔧 Robustez y Escalabilidad
+
+**Robustez:**
+- Validación exhaustiva server-side
+- Manejo errores con códigos específicos
+- Logging estructurado
+- Transacciones DB cuando necesario
+- Rollback strategies
+
+**Escalabilidad:**
+- Código stateless
+- Caché estratégico (Next.js BFF)
+- Queries optimizadas (índices, select)
+- Paginación en listas
+- Rate limiting
+- Horizontal scaling ready
+
+## 📝 Stack Tecnológico
+
+**Frontend**: Next.js 14 + TypeScript + Tailwind + shadcn/ui
+- Server Components para datos (SEO)
+- Client Components para interactividad
+- React Hook Form + Zod
+
+**BFF Layer**: Next.js API Routes (`client/app/api/v1/*`)
+- Endpoints públicos
+- Auth: JWT cookies httpOnly
+- Transformación, caché, rate limiting
+
+**Backend**: NestJS (privado)
+- Módulos por dominio
+- Prisma ORM
+- Passport.js auth
+- API Key desde Next.js
+
+**Database**: PostgreSQL 15 (Docker) + Redis
+- Normalización 3NF
+- Prisma Migrate
+
+## 🔐 Seguridad
+
+- JWT (15min) + Refresh tokens (7 días) | Cookies httpOnly | Bcrypt (12 rounds)
+- Validación server-side siempre | Guards basados en roles
+- Rate limiting: 100/15min anónimo, 1000 autenticado, 5000 admin
+- SQL injection protection (Prisma)
+
+## 🚀 Performance
+
+- Server Components SSR | Lazy loading imágenes | Code splitting | Caché BFF layer
+- Queries optimizadas | Connection pooling | Background jobs
+
+## 📊 Logging y Monitoreo
+
+- Structured logging (JSON) | Niveles: ERROR, WARN, INFO, DEBUG
+- Context: userId, requestId, timestamp | No loguear información sensible
+- Métricas: response time, error rate, request rate
+
+## 📚 Documentación
+
+### Antes de Implementar
+**SIEMPRE** revisar `/docs/`:
+- `01_prd.md` - Requisitos
+- `02_arquitectura.md` - Arquitectura BFF
+- `03_especificacion_api.md` - Endpoints
+- `04_modelo_entidad_relacion.md` - Modelo datos
+- `05_stack_tecnologico.md` - Decisiones técnicas
+
+### Después de Implementar
+**OBLIGATORIO**: Crear `./docs/plans/##-[nombre].md` (máx 200 líneas)
+
+**Formato**: `01-autenticacion-jwt.md`, `02-sistema-reservas.md`, etc.
+
+**Contenido**:
+- Descripción implementada
+- Arquitectura/patrón usado
+- Decisiones técnicas
+- Dependencias y relaciones
+- Testing implementado
+- Tiempo estimado para completar
+- Estado: ⚪️ 🔵 🟡 🟢
+
+## ❓ Cuándo Preguntar
+
+**SIEMPRE pregunta si:**
+- No está claro en documentación
+- Múltiples formas válidas de implementar
+- Necesitas más contexto
+- Trade-offs importantes
+- Necesitas aclarar prioridades
+
+**NO asumas:**
+- Decisiones arquitectónicas
+- Cambios en modelo datos
+- Nuevas dependencias
+- Modificaciones APIs sin revisar impacto
+
+## ✅ Checklist Pre-Commit
+
+- [ ] Revisada documentación `/docs/`
+- [ ] Arquitectura BFF respetada
+- [ ] Principios SOLID aplicados
+- [ ] Validación server-side
+- [ ] Manejo errores robusto
+- [ ] Tests escritos
+- [ ] Archivo registro en `./docs/plans/`
+- [ ] Código tipado estrictamente
+- [ ] Sin código comentado/console.logs
+- [ ] Performance optimizada
+- [ ] Seguridad verificada
+- [ ] Variables de entorno en UPPER_SNAKE_CASE
+- [ ] Seeding implementado (no mocks)
+
+## 🎨 Estados
+
+⚪️ Pendiente | 🔵 En Progreso | 🟡 Necesita Revisión | 🟢 Completado
+
+**Nota**: Solo si supera el 85% del testing se marca como completado

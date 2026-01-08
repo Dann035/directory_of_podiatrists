@@ -1,0 +1,188 @@
+# 07 - Página Home
+
+**Versión**: 1.0 | **Fecha**: Enero 2026 | **Estado**: ⚪️ Pendiente
+
+---
+
+## Resumen Ejecutivo
+
+Página principal optimizada para conversión con buscador como elemento héroe, propuesta de valor clara y CTAs estratégicos. Diseño limpio que guía al usuario hacia la búsqueda de podólogos.
+
+---
+
+## Audiencia
+
+- **Visitantes nuevos**: Primera impresión
+- **Pacientes**: Punto de entrada principal
+- **Podólogos**: CTA para registro profesional
+
+---
+
+## Estructura de la Página
+
+### Hero Section
+- **Buscador prominente**: Input grande centrado
+  - Placeholder: "Busca podólogos en tu ciudad"
+  - Botón "Buscar" + Enter para submit
+  - Autocompletado ciudades (mínimo 3 caracteres)
+- **Headline**: "Encuentra el podólogo perfecto cerca de ti"
+- **Subheadline**: "Profesionales verificados, citas fáciles, resultados confiables"
+- **CTA secundario**: "Soy Podólogo" (botón outline)
+
+### Sección: Por qué elegirnos
+- **3 beneficios principales**:
+  1. "Profesionales Verificados" (icono + texto)
+  2. "Reserva Online" (icono + texto)
+  3. "Reseñas Reales" (icono + texto)
+- Layout: 3 columnas (desktop), 1 columna (mobile)
+
+### Sección: Podólogos Destacados
+- **Título**: "Podólogos Premium Recomendados"
+- **Grid**: 3-4 tarjetas de podólogos Premium
+- **Elementos tarjeta**:
+  - Foto profesional
+  - Nombre
+  - Ubicación
+  - Rating
+  - Badge "Premium"
+  - CTA "Ver Perfil"
+- **CTA final**: "Ver todos los podólogos"
+
+### Sección: Cómo funciona
+- **3 pasos visuales**:
+  1. "Busca" (icono lupa)
+  2. "Compara" (icono comparación)
+  3. "Contacta" (icono teléfono)
+- Layout horizontal con números
+
+### Sección: Estadísticas
+- **Números destacados**:
+  - "X Podólogos Verificados"
+  - "X Citas Reservadas"
+  - "X Reseñas Publicadas"
+  - "X Ciudades Cubiertas"
+- Diseño: Números grandes + etiquetas
+
+### Footer
+- **Enlaces principales**:
+  - Sobre nosotros
+  - Contacto
+  - FAQ
+  - Legal (Privacidad, Cookies, Términos)
+- **Redes sociales**: Iconos (si aplica)
+- **Copyright**: Año + nombre empresa
+
+---
+
+## Elementos de Confianza
+
+### Social Proof
+- Testimonios de pacientes (opcional, post-MVP)
+- Logos de colegios profesionales (si partnerships)
+- Badge "Plataforma Verificada"
+
+### Transparencia
+- "Todos los podólogos verificados"
+- "Sin comisiones ocultas"
+- "Datos protegidos (RGPD)"
+
+---
+
+## CTAs Estratégicos
+
+### Primarios
+1. **Buscador**: Acción principal (siempre visible)
+2. **"Ver Perfil"**: En podólogos destacados
+
+### Secundarios
+1. **"Soy Podólogo"**: Registro profesionales
+2. **"Ver todos"**: Explorar directorio completo
+3. **"Contactar"**: Soporte (footer)
+
+---
+
+## Optimización SEO
+
+### Meta Tags
+- **Title**: "Directorio de Podólogos en España | Encuentra tu Podólogo"
+- **Description**: "Busca podólogos verificados en tu ciudad. Reserva citas online, lee reseñas reales. Profesionales colegiados."
+- **Keywords**: podólogo, podología, buscar podólogo, podólogo cerca
+
+### Structured Data
+- **Organization**: Schema.org
+- **LocalBusiness**: Para podólogos destacados
+- **BreadcrumbList**: Navegación
+
+### Contenido
+- **H1**: Headline principal
+- **H2**: Secciones principales
+- **Texto descriptivo**: 200-300 palabras sobre el servicio
+
+---
+
+## Responsive Design
+
+### Desktop (>1024px)
+- Hero centrado, buscador grande
+- Grid 3 columnas en secciones
+- Footer completo con todas las secciones
+
+### Tablet (768-1024px)
+- Hero adaptado
+- Grid 2 columnas
+- Footer simplificado
+
+### Mobile (<768px)
+- Hero full-width, buscador prominente
+- Stack vertical en todas las secciones
+- Footer colapsable
+- CTAs táctiles (mínimo 44x44px)
+
+---
+
+## Performance
+
+### Objetivos
+- **Lighthouse Score**: >90
+- **First Contentful Paint**: <1.5s
+- **Time to Interactive**: <3s
+
+### Optimizaciones
+- **Imágenes**: WebP, lazy loading
+- **Fuentes**: Preload críticas
+- **JavaScript**: Code splitting
+- **CSS**: Critical CSS inline
+
+---
+
+## A/B Testing (Post-MVP)
+
+### Variantes a Probar
+- Headline alternativo
+- Posición del buscador
+- Colores CTAs
+- Número de podólogos destacados
+
+---
+
+## Criterios de Aceptación
+
+- [ ] Hero section con buscador prominente
+- [ ] Secciones principales implementadas
+- [ ] CTAs estratégicos visibles
+- [ ] Responsive en todos los dispositivos
+- [ ] SEO optimizado (meta tags, structured data)
+- [ ] Performance objetivos cumplidos
+- [ ] Elementos de confianza visibles
+
+---
+
+## Referencias
+
+- `03_directorio_busqueda.mdc` - Destino del buscador
+- `05_onboarding_podologos.mdc` - CTA "Soy Podólogo"
+- `17_requisitos_tecnicos.mdc` - SEO y Performance
+
+---
+
+**Estado**: ⚪️ Pendiente | **Autor**: UX Team | **Próxima revisión**: Febrero 2026

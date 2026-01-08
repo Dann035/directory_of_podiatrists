@@ -1,0 +1,126 @@
+# 14 - Internacionalización
+
+**Versión**: 1.0 | **Fecha**: Enero 2026 | **Estado**: ⚪️ Pendiente
+
+---
+
+## Resumen Ejecutivo
+
+Arquitectura de internacionalización (i18n) para soportar Español (ES) y Valenciano (VA). Estructura de traducciones, implementación técnica y estrategia de rollout. MVP incluye solo ES, VA como preparación futura.
+
+---
+
+## Audiencia
+
+- **Desarrolladores**: Implementación técnica
+- **Product Manager**: Estrategia de idiomas
+- **Traductores**: Gestión de contenidos
+
+---
+
+## Idiomas Soportados
+
+### MVP
+- **Español (ES)**: Idioma principal, completo
+
+### Post-MVP
+- **Valenciano (VA)**: Preparación arquitectura, contenido parcial
+
+### Futuro
+- **Catalán (CA)**: Si demanda justifica
+- **Otros**: Evaluar según crecimiento
+
+---
+
+## Arquitectura Técnica
+
+### Librería Recomendada
+- **next-intl**: Específica para Next.js 14
+- **Alternativa**: react-i18next (más genérica)
+
+### Estructura de Archivos
+```
+/locales
+  /es
+    common.json      # Textos comunes
+    auth.json        # Autenticación
+    search.json      # Búsqueda
+    profile.json     # Perfiles
+    dashboard.json   # Dashboard
+    legal.json       # Textos legales
+  /va
+    (misma estructura)
+```
+
+### Configuración Next.js
+- **Middleware**: Detectar idioma (header, cookie, default)
+- **Routing**: `/es/...` y `/va/...` (opcional en MVP)
+- **Default**: ES si no se especifica
+
+---
+
+## Detección de Idioma
+- **Prioridad**: URL → Cookie → Header Accept-Language → Default (ES)
+- **Persistencia**: Cookie `NEXT_LOCALE` + perfil usuario (si autenticado)
+
+---
+
+## Gestión de Traducciones
+- **Formato**: JSON estructurado por secciones (common, auth, search, profile, etc.)
+- **Uso**: `useTranslations('section')` de next-intl
+- **Interpolación**: `t('key', { variable: value })`
+
+---
+
+## Contenido Traducible
+- **Estático**: UI (botones, labels), páginas (Home, FAQ, Legal), formularios
+- **Dinámico**: Especialidades (si aplica), mensajes sistema (emails)
+- **No traducible**: Datos usuario, nombres ciudades, números (formato local), URLs
+
+---
+
+## Estrategia de Rollout
+- **Fase 1 (MVP)**: Arquitectura i18n preparada, 100% ES, sin prefijo URL
+- **Fase 2**: Estructura `/va/`, 20% contenido crítico, testing
+- **Fase 3**: 100% traducido, routing `/va/...` activo
+
+---
+
+## Consideraciones Específicas
+- **Valenciano**: Estándar, tú (UI) / usted (legal), términos médicos en ES si no hay equivalente
+- **Fechas/Números**: DD/MM/YYYY, EUR formato local, decimales con coma
+
+---
+
+## SEO Multidioma
+- **Hreflang**: Tags `<link rel="alternate" hreflang="es/va">`
+- **URLs**: Subdirectorios (`/es/...`, `/va/...`) o subdominios (MVP: sin prefijo)
+- **Structured Data**: Especificar language en Schema.org, traducir descripciones
+
+---
+
+## Testing
+- Cambio idioma funcional, persistencia guardada, fallback a ES, validaciones en idioma correcto, emails según preferencia
+
+---
+
+## Criterios de Aceptación
+
+- [ ] Arquitectura i18n implementada
+- [ ] Español completo y funcional
+- [ ] Estructura preparada para Valenciano
+- [ ] Detección de idioma operativa
+- [ ] Persistencia de preferencia funcional
+- [ ] SEO multidioma configurado (hreflang)
+- [ ] Testing de cambio idioma validado
+
+---
+
+## Referencias
+
+- `17_requisitos_tecnicos.mdc` - SEO y performance
+- `16_componentes_reutilizables.mdc` - Componentes UI traducibles
+
+---
+
+**Estado**: ⚪️ Pendiente | **Autor**: Frontend Team | **Próxima revisión**: Febrero 2026

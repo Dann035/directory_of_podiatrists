@@ -1,0 +1,185 @@
+# 03 - Directorio y Búsqueda
+
+**Versión**: 1.0 | **Fecha**: Enero 2026 | **Estado**: ⚪️ Pendiente
+
+---
+
+## Resumen Ejecutivo
+
+Sistema de búsqueda geolocalizada de podólogos con filtros avanzados, algoritmo de ordenación inteligente y visualización dual (mapa/lista). Optimizado para conversión con resultados relevantes y experiencia de usuario fluida.
+
+---
+
+## Audiencia
+
+- **Desarrolladores Backend**: Algoritmo de búsqueda y ordenación
+- **Desarrolladores Frontend**: UI de búsqueda y filtros
+- **UX Designers**: Experiencia de usuario
+
+---
+
+## Funcionalidades Principales
+
+### Búsqueda por Ubicación
+- **Ciudad**: Autocompletado con sugerencias
+- **Provincia**: Dropdown con todas las provincias españolas
+- **Código Postal**: Validación formato español (5 dígitos)
+- **Geolocalización**: Detección automática (con permiso usuario)
+
+### Filtros Disponibles
+- **Especialidad**: Podología general, deportiva, pediátrica, geriátrica
+- **Disponibilidad**: "Disponible hoy", "Esta semana", "Este mes"
+- **Precio**: Rango deslizante (€0-€200)
+- **Valoración**: Mínimo de estrellas (1-5)
+- **Verificado**: Solo podólogos verificados
+- **Plan Premium**: Solo perfiles destacados
+
+### Vista de Resultados
+- **Lista**: Tarjetas con foto, nombre, ubicación, rating, precio, CTA
+- **Mapa**: Marcadores interactivos, clic muestra popup con info básica
+- **Toggle**: Cambio entre vistas sin perder filtros
+
+---
+
+## Algoritmo de Ordenación
+
+### Prioridad (por defecto)
+1. **Perfiles Premium**: Siempre primeros (si aplican filtros)
+2. **Distancia**: Más cercanos primero (si hay geolocalización)
+3. **Rating**: Mayor valoración
+4. **Verificados**: Antes que no verificados
+5. **Completitud perfil**: Perfiles completos antes que incompletos
+
+### Opciones de Orden Manual
+- Más cercanos
+- Mejor valorados
+- Más económicos
+- Más caros
+- Más recientes (últimos registrados)
+
+---
+
+## Lógica de Búsqueda
+
+### Query Base
+```sql
+SELECT podólogos WHERE
+  - Ubicación coincide (ciudad/provincia/código postal)
+  - Estado = 'verificado' AND 'activo'
+  - Plan != 'inactivo'
+```
+
+### Filtros Aplicados
+- Especialidad: JOIN con tabla especialidades
+- Disponibilidad: JOIN con tabla citas disponibles
+- Precio: Rango entre min_price y max_price
+- Rating: AVG(reviews.rating) >= filtro_rating
+
+### Optimización
+- **Índices**: ciudad, provincia, codigo_postal, especialidad_id
+- **Caché**: Resultados populares (ciudades grandes) cacheados 5min
+- **Paginación**: 20 resultados por página
+
+---
+
+## Componentes UI
+
+### Buscador Principal (Home)
+- Input grande con placeholder "Busca podólogos en tu ciudad"
+- Botón "Buscar" + Enter para submit
+- Autocompletado ciudades (mínimo 3 caracteres)
+
+### Página de Resultados
+- **Header fijo**: Buscador + filtros colapsables (con effecto glass)
+- **Sidebar izquierdo**: Panel de filtros (sticky en desktop)
+- **Área central**: Resultados (lista o mapa)
+- **Paginación**: Bottom de página (lista) o "Cargar más" (mapa)
+
+### Tarjeta de Podólogo (Lista)
+- Foto profesional (200x200px)
+- Nombre + apellido
+- Especialidades (badges)
+- Ubicación (ciudad, provincia)
+- Rating (estrellas + número reseñas)
+- Precio consulta (si disponible)
+- Badge "Verificado" / "Premium"
+- CTAs: "Ver Perfil" / "Llamar" / "Reservar"
+
+### Popup Mapa
+- Foto pequeña + nombre
+- Rating
+- Ubicación
+- CTA "Ver Perfil Completo"
+
+---
+
+## Geolocalización
+
+### Implementación
+- **API**: Google Maps Geocoding + Places API
+- **Permisos**: Solicitar acceso a ubicación (navegador)
+- **Fallback**: Si denegado, usar búsqueda manual
+
+### Casos de Uso
+1. Usuario permite geolocalización → Ordenar por distancia
+2. Usuario deniega → Ordenar por rating (default)
+3. Sin conexión → Búsqueda manual obligatoria
+
+---
+
+## Estados Vacíos
+
+### Sin Resultados
+- Ilustración amigable
+- Mensaje: "No encontramos podólogos en [ubicación]"
+- Sugerencias:
+  - Ampliar búsqueda (provincia en lugar de ciudad)
+  - Cambiar filtros
+  - "Notificarme cuando haya disponibilidad" (email)
+
+### Búsqueda Inicial
+- Placeholder con ejemplos de búsqueda
+- Ciudades populares como sugerencias
+- "Podólogos destacados" (si hay Premium)
+
+---
+
+## Performance
+
+### Objetivos
+- **Tiempo de respuesta**: <300ms (p95)
+- **Primera renderización**: <1s
+- **Interacción fluida**: 60fps en scroll/mapa
+- **Sin Layout Shift**: Siempre mostrar Skeleton Screens en resultados y tarjetas mientras se cargan los datos
+
+### Optimizaciones
+- Skeleton Screens persistentes hasta carga real (listas/mapa/tarjetas)
+- Lazy loading de imágenes
+- Virtual scrolling en lista (si >50 resultados)
+- Debounce en búsqueda (300ms)
+- Prefetch de resultados populares
+
+---
+
+## Criterios de Aceptación
+
+- [ ] Búsqueda por ciudad/provincia/código postal funcional
+- [ ] Filtros aplicados correctamente
+- [ ] Algoritmo de ordenación implementado
+- [ ] Vista mapa y lista operativas
+- [ ] Geolocalización opcional funcional
+- [ ] Estados vacíos manejados
+- [ ] Performance objetivos cumplidos
+- [ ] Responsive (mobile/tablet/desktop)
+
+---
+
+## Referencias
+
+- `04_perfil_profesional.mdc` - Destino de búsqueda
+- `13_integraciones_externas.mdc` - Google Maps API
+- `17_requisitos_tecnicos.mdc` - Performance y SEO
+
+---
+
+**Estado**: ⚪️ Pendiente | **Autor**: Backend Team | **Próxima revisión**: Febrero 2026

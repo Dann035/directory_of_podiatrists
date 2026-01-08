@@ -1,0 +1,199 @@
+# 04 - Perfil Profesional
+
+**Versión**: 1.0 | **Fecha**: Enero 2026 | **Estado**: ⚪️ Pendiente
+
+---
+
+## Resumen Ejecutivo
+
+Página de perfil del podólogo optimizada para conversión. Estructura visual clara con información esencial, validación de datos, CTAs prominentes y elementos de confianza (verificación, reseñas, fotos).
+
+---
+
+## Audiencia
+
+- **Podólogos**: Gestión de su perfil
+- **Pacientes**: Información para decisión
+- **Desarrolladores**: Implementación UI/UX
+
+---
+
+## Estructura Visual
+
+### Header del Perfil
+- **Foto profesional grande** (600x600px, circular)
+- **Nombre completo** + Badge "Verificado"
+- **Especialidades** (badges)
+- **Rating** (estrellas + número reseñas)
+- **Ubicación** (ciudad, provincia, dirección)
+- **CTAs principales**: "Llamar", "Reservar Cita", "Enviar Mensaje"
+
+### Secciones del Perfil
+
+#### 1. Información Básica
+- **Horarios**: Tabla semanal con disponibilidad
+- **Precios**: Consulta inicial, revisión, tratamientos
+- **Idiomas**: Español, Valenciano (si aplica)
+- **Años de experiencia**: Desde año inicio
+
+#### 2. Sobre el Profesional
+- **Biografía**: Texto libre (máx 500 palabras)
+- **Formación**: Títulos, cursos, especializaciones
+- **Colegiado**: Número oficial (verificado)
+
+#### 3. Servicios Ofrecidos
+- Lista de tratamientos/servicios
+- Precios asociados (si disponibles)
+- Iconos o imágenes por servicio
+
+#### 4. Galería
+- Fotos del consultorio (máx 10)
+- Fotos de tratamientos (opcional, con consentimiento)
+- Video presentación (opcional, Premium)
+
+#### 5. Reseñas y Valoraciones
+- Rating promedio (1-5 estrellas)
+- Distribución de ratings (gráfico)
+- Lista de reseñas (últimas 10, paginación)
+- Filtro por rating
+- Botón "Escribir Reseña" (solo pacientes con cita previa)
+
+#### 6. Ubicación
+- Mapa interactivo (Google Maps)
+- Dirección completa
+- Instrucciones de llegada
+- Transporte público cercano
+
+---
+
+## Validación de Datos
+
+### Campos Obligatorios
+- Nombre y apellidos
+- Número de colegiado (verificado)
+- Email (verificado)
+- Teléfono
+- Dirección consultorio
+- Especialidad principal
+- Foto profesional
+
+### Campos Opcionales
+- Biografía
+- Horarios detallados
+- Precios
+- Galería
+- Video
+
+### Reglas de Validación
+- **Email**: Formato válido + verificación
+- **Teléfono**: Formato español (9 dígitos)
+- **Colegiado**: Verificación contra base datos oficial
+- **Fotos**: Formato JPG/PNG, máx 5MB, ratio 1:1
+- **Biografía**: Sin HTML, solo texto plano
+
+---
+
+## CTAs de Conversión
+
+### Primarios (Siempre visibles)
+1. **"Llamar"**: Teléfono clicable (mobile: acción directa)
+2. **"Reservar Cita"**: Modal o página dedicada
+3. **"Enviar Mensaje"**: Formulario contacto (si plan Premium)
+
+### Secundarios
+- **"Compartir Perfil"**: Redes sociales
+- **"Guardar Favorito"**: Solo usuarios autenticados
+- **"Ver en Mapa"**: Scroll a sección ubicación
+
+### Estrategia de Ubicación
+- **Sticky header**: CTAs siempre visibles al hacer scroll
+- **Floating button** (mobile): "Llamar" fijo bottom
+- **Múltiples puntos**: CTAs repetidos en secciones clave
+
+---
+
+## Elementos de Confianza
+
+### Badges y Verificaciones
+- **"Verificado"**: Podólogo colegiado confirmado
+- **"Premium"**: Perfil destacado (si suscripción activa)
+- **"Respuesta rápida"**: Si responde <24h (si aplica)
+- **"Años de experiencia"**: Badge con número
+
+### Social Proof
+- **Número de reseñas**: "Valorado por X pacientes"
+- **Última reseña**: "Hace X días"
+- **Fotos reales**: Consultorio, equipo, profesional
+
+### Transparencia
+- **Precios claros**: Sin sorpresas
+- **Horarios actualizados**: Sincronización automática
+- **Disponibilidad en tiempo real**: Si integrado calendario
+
+---
+
+## Diferenciación por Plan
+
+### Free
+- Perfil básico visible
+- Sin destacado en búsqueda
+- CTAs limitados (solo "Llamar")
+- Sin analytics avanzado
+
+### Básico
+- Perfil completo
+- Posición mejorada en búsqueda
+- CTAs completos
+- Métricas básicas
+
+### Premium
+- **Perfil destacado**: Badge "Premium", top resultados
+- **Video presentación**: Sección dedicada
+- **Formulario contacto**: Directo desde perfil
+- **Analytics avanzado**: Dashboard completo
+- **Soporte prioritario**: Badge "Respuesta rápida"
+
+---
+
+## Responsive Design
+
+### Desktop (>1024px)
+- Layout 2 columnas (info + mapa)
+- CTAs en header sticky
+- Galería grid 3 columnas
+
+### Tablet (768-1024px)
+- Layout 1 columna
+- CTAs en header sticky
+- Galería grid 2 columnas
+
+### Mobile (<768px)
+- Layout 1 columna optimizado
+- Floating button "Llamar"
+- Galería 1 columna (swipe)
+- Mapa full-width
+
+---
+
+## Criterios de Aceptación
+
+- [ ] Estructura visual implementada
+- [ ] Validación de datos funcional
+- [ ] CTAs optimizados para conversión
+- [ ] Elementos de confianza visibles
+- [ ] Diferenciación por plan aplicada
+- [ ] Responsive en todos los dispositivos
+- [ ] Performance: Carga <2s
+- [ ] SEO: Meta tags, structured data
+
+---
+
+## Referencias
+
+- `05_onboarding_podologos.mdc` - Creación de perfil
+- `06_modelo_monetizacion.mdc` - Diferenciación planes
+- `09_dashboard_metricas.mdc` - Analytics del perfil
+
+---
+
+**Estado**: ⚪️ Pendiente | **Autor**: UX Team | **Próxima revisión**: Febrero 2026

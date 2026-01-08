@@ -1,0 +1,116 @@
+# 16 - Componentes Reutilizables
+
+**Versión**: 1.0 | **Fecha**: Enero 2026 | **Estado**: ⚪️ Pendiente
+
+---
+
+## Resumen Ejecutivo
+
+Design System básico con componentes reutilizables: botones, tarjetas de podólogo, inputs, modales, badges. Estilo consistente, accesible y responsive. Base para escalabilidad UI.
+
+---
+
+## Audiencia
+
+- **Desarrolladores Frontend**: Implementación de componentes
+- **UX/UI Designers**: Guía de estilo
+- **QA**: Testing de componentes
+
+---
+
+## Componentes Base
+
+### Botones
+- **Variantes**: Primary (azul), Secondary (outline), Danger (rojo), Ghost (sin fondo)
+- **Tamaños**: Large (48px), Medium (40px), Small (32px)
+- **Estados**: Default, Hover, Active, Disabled (50%), Loading (spinner)
+- **Props**: variant, size, disabled, loading, children, onClick
+
+---
+
+### Inputs
+- **Tipos**: Text, Email (validación), Password (toggle), Number, Search (lupa), Textarea
+- **Estados**: Default, Focus, Error (rojo + mensaje), Success (verde), Disabled
+- **Estructura**: Label, Input, Helper text (opc), Error message, Icon (opc)
+
+---
+
+### Tarjeta de Podólogo
+- **Estructura**: Foto (200x200px), nombre, especialidades (badges), ubicación, rating, precio, badges (Verificado/Premium), CTAs
+- **Variantes**: Lista (horizontal), Grid (vertical), Compacta (mapa popup)
+- **Responsive**: Desktop completo, Tablet adaptado, Mobile stack vertical
+
+---
+
+### Badges
+- **Tipos**: Verificado (verde), Premium (dorado), Nuevo (azul), Destacado (naranja)
+- **Uso**: Tarjetas, perfiles, resultados búsqueda
+
+---
+
+### Modales
+- **Casos**: Confirmación, formulario (login/registro), información
+- **Estructura**: Overlay, contenedor centrado, header (título + cerrar), body, footer
+- **Comportamiento**: Cerrar (overlay/X/ESC), focus trap, scroll si excede
+
+---
+
+### Alerts/Notificaciones
+- **Tipos**: Success (verde), Error (rojo), Warning (amarillo), Info (azul)
+- **Posicionamiento**: Toast (esquina), Inline (formulario), Banner (superior)
+
+---
+
+## Sistema de Diseño
+- **Colores**: Primary (#3B82F6), Secondary (#6B7280), Success (#10B981), Danger (#EF4444), Warning (#F59E0B), Background (#FFFFFF), Text (#111827)
+- **Tipografía**: Inter (sans-serif), Headings (Bold 24-48px), Body (Regular 16px), Small (14px)
+- **Espaciado**: Múltiplos 4px, Padding 16px, Gap 8px
+- **Sombras**: Small (cards), Medium (modales), Large (dropdowns)
+
+---
+
+## Accesibilidad
+- ARIA labels, keyboard navigation (Tab/Enter/ESC), focus visible, contraste WCAG AA (4.5:1), screen readers
+
+---
+
+## Responsive
+- **Breakpoints**: Mobile (<768px), Tablet (768-1024px), Desktop (>1024px)
+- **Adaptaciones**: Botones táctiles (44x44px), inputs full-width, tarjetas stack, modales full-screen
+
+---
+
+## Librería de Componentes
+
+### Recomendación
+- **shadcn/ui**: Componentes accesibles, personalizables
+- **Radix UI**: Primitivos sin estilos
+- **Tailwind CSS**: Utilidades de estilo
+
+### Estructura
+- `/components/ui`: Button, Input, Card, Modal, Badge, Alert
+- `/components/podologist`: PodologistCard, PodologistProfile
+
+---
+
+## Criterios de Aceptación
+
+- [ ] Componentes base implementados
+- [ ] Variantes y estados funcionales
+- [ ] Sistema de diseño consistente
+- [ ] Accesibilidad validada (WCAG AA)
+- [ ] Responsive en todos los dispositivos
+- [ ] Documentación de uso (Storybook opcional)
+- [ ] Testing de componentes (Jest + React Testing Library)
+
+---
+
+## Referencias
+
+- `04_perfil_profesional.mdc` - Uso de tarjetas
+- `07_pagina_home.mdc` - Uso de componentes
+- `17_requisitos_tecnicos.mdc` - Performance y accesibilidad
+
+---
+
+**Estado**: ⚪️ Pendiente | **Autor**: Frontend Team | **Próxima revisión**: Febrero 2026
